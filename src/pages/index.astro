@@ -1,0 +1,317 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site';
+
+const title = 'Web Design Guyana | Custom Websites | In2ition Media';
+const description = "In2ition Media is a web design studio in Guyana building fast, custom websites for Guyana's hotels, engineering firms, tour operators and service businesses.";
+const schema = [{
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.name,
+  url: `${SITE.url}/`,
+  publisher: { '@id': `${SITE.url}/#business` },
+}];
+---
+<Base title={title} description={description} schema={schema} isHome>
+<div id="top"></div>
+    <!-- ============ HERO ============ -->
+    <section class="hero section--dark">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__grid"></div>
+        <div class="hero__glow"></div>
+        <div class="hero__glow hero__glow--2"></div>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__chips">
+          <p class="availability" data-hero-fade><span class="dot"></span> Now booking projects for <strong data-booking-month>November</strong></p>
+          <a href="#reviews" class="rating-chip" data-hero-fade aria-label="Rated 5.0 out of 5 on Google. Read reviews."><span class="stars stars--xs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span> <strong>5.0</strong> on Google</a>
+        </div>
+
+        <h1 class="hero__title" aria-label="Websites that make Guyana's best businesses look the part.">
+          <span class="line" aria-hidden="true"><span class="line__inner">Websites that make</span></span>
+          <span class="line" aria-hidden="true"><span class="line__inner">Guyana's best businesses</span></span>
+          <span class="line" aria-hidden="true"><span class="line__inner">
+            <span class="rotator">
+              <em class="rotator__item is-active">look the part.</em>
+              <em class="rotator__item">stand out.</em>
+              <em class="rotator__item">win more work.</em>
+            </span>
+          </span></span>
+        </h1>
+
+        <div class="hero__bottom">
+          <p class="hero__lede" data-hero-fade>We design and build custom websites for hospitality, engineering, industrial and service brands that are serious about growth.</p>
+          <div class="hero__actions" data-hero-fade>
+            <a href="#contact" class="btn btn--red" data-magnetic><span class="btn__label" data-text="Start a project">Start a project</span><span class="btn__icon" aria-hidden="true">→</span></a>
+            <a href="#work" class="btn btn--ghost" data-magnetic><span class="btn__label" data-text="See the work">See the work</span></a>
+          </div>
+        </div>
+
+        <div class="scroll-cue" data-hero-fade aria-hidden="true"><span></span>Scroll</div>
+      </div>
+    </section>
+
+    <!-- ============ SHOWCASE (pinned zoom) ============ -->
+    <section class="showcase section--dark" aria-label="Featured project preview">
+      <div class="showcase__stage">
+        <div class="stage-card stage-card--1" aria-hidden="true">
+          <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="/assets/img/work/singingchef-desktop.webp" alt=""></div>
+        </div>
+        <div class="stage-card stage-card--3" aria-hidden="true">
+          <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="/assets/img/work/specom-desktop.webp" alt=""></div>
+        </div>
+        <div class="stage-card stage-card--2">
+          <div class="browser browser--hero">
+            <div class="browser__bar"><i></i><i></i><i></i><span>arcticzonehvac.com</span></div>
+            <div class="browser__viewport"><img src="/assets/img/work/arctic-full.webp" alt="Arctic Zone HVAC website designed by In2ition Media"></div>
+          </div>
+          <div class="stage-caption">
+            <span>Featured</span> Arctic Zone HVAC, commercial &amp; industrial HVAC
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CLIENT STRIP ============ -->
+    <section class="clients section--dark" aria-label="Recent clients">
+      <p class="clients__label">Trusted by businesses across Guyana</p>
+      <div class="marquee">
+        <div class="marquee__track">
+          <span>Arctic Zone HVAC</span><span>Specom</span><span>Singing Chef Adventures</span><span>Status Hotel</span><span>First Fitness Gym</span><span>Island Mastercraft</span><span>AC Guyana</span><span>Service Guyana</span>
+          <span aria-hidden="true">Arctic Zone HVAC</span><span aria-hidden="true">Specom</span><span aria-hidden="true">Singing Chef Adventures</span><span aria-hidden="true">Status Hotel</span><span aria-hidden="true">First Fitness Gym</span><span aria-hidden="true">Island Mastercraft</span><span aria-hidden="true">AC Guyana</span><span aria-hidden="true">Service Guyana</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section class="work section--light" id="work">
+      <div class="container">
+        <div class="section-head section-head--split">
+          <div>
+            <p class="eyebrow">Selected work</p>
+            <h2 class="section-title" data-split>Recent projects, <em>built from scratch.</em></h2>
+          </div>
+          <p class="section-note hint-hover">Hover over a site to scroll through it.</p>
+        </div>
+
+        <article class="project">
+          <div class="project__media" data-cursor="view">
+            <a class="browser browser--scroll" data-scroll href="https://arcticzonehvac.com/" target="_blank" rel="noopener" aria-label="Visit Arctic Zone HVAC live site">
+              <div class="browser__bar"><i></i><i></i><i></i><span>arcticzonehvac.com</span></div>
+              <div class="browser__viewport"><img src="/assets/img/work/arctic-full.webp" alt="Arctic Zone HVAC website, full homepage" loading="lazy"></div>
+            </a>
+            <div class="phone"><img src="/assets/img/work/arctic-mobile.webp" alt="Arctic Zone HVAC website on mobile" loading="lazy"></div>
+          </div>
+          <div class="project__info">
+            <p class="project__num">01</p>
+            <h3 class="project__title">Arctic Zone HVAC</h3>
+            <p class="project__meta">Commercial &amp; Industrial HVAC · Guyana</p>
+            <p class="project__desc">A website for a commercial HVAC contractor that needed to look as dependable as its work. It has an industrial look, a 24/7 emergency line on every page, and an interactive cooling-load estimator that turns visitors into quote requests.</p>
+            <ul class="tags"><li>Web Design</li><li>Development</li><li>Cooling Estimator</li><li>SEO</li></ul>
+            <div class="project__links">
+              <a class="link-arrow link-arrow--case" href="/work/arctic-zone-hvac/">Read the case study <span aria-hidden="true">→</span></a>
+              <a class="link-arrow" href="https://arcticzonehvac.com/" target="_blank" rel="noopener">Visit live site <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project project--flip">
+          <div class="project__media" data-cursor="view">
+            <div class="browser browser--scroll" data-scroll tabindex="0" aria-label="Specom website preview">
+              <div class="browser__bar"><i></i><i></i><i></i><span>specom</span></div>
+              <div class="browser__viewport"><img src="/assets/img/work/specom-full.webp" alt="Specom website, full homepage" loading="lazy"></div>
+            </div>
+            <div class="phone"><img src="/assets/img/work/specom-mobile.webp" alt="Specom website on mobile" loading="lazy"></div>
+          </div>
+          <div class="project__info">
+            <p class="project__num">02</p>
+            <h3 class="project__title">Specom</h3>
+            <p class="project__meta">Standby Power Engineering · Guyana</p>
+            <p class="project__desc">A corporate website for an authorized agent of global power brands. It puts their partner brands up front, organizes a large catalogue of UPS, battery and renewable energy services, and ends every page with an enquiry.</p>
+            <ul class="tags"><li>Web Design</li><li>Development</li><li>Multilingual</li><li>Lead Capture</li></ul>
+            <div class="project__links">
+              <a class="link-arrow link-arrow--case" href="/work/specom/">Read the case study <span aria-hidden="true">→</span></a>
+              <span class="link-arrow link-arrow--muted">Launching soon</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project" id="singing-chef">
+          <div class="project__media" data-cursor="view">
+            <a class="browser browser--scroll" data-scroll href="https://www.singingchefadventures.com/" target="_blank" rel="noopener" aria-label="Visit Singing Chef Adventures live site">
+              <div class="browser__bar"><i></i><i></i><i></i><span>singingchefadventures.com</span></div>
+              <div class="browser__viewport"><img src="/assets/img/work/singingchef-full.webp" alt="Singing Chef Adventures website, full homepage" loading="lazy"></div>
+            </a>
+            <div class="phone"><img src="/assets/img/work/singingchef-mobile.webp" alt="Singing Chef Adventures website on mobile" loading="lazy"></div>
+          </div>
+          <div class="project__info">
+            <p class="project__num">03</p>
+            <h3 class="project__title">Singing Chef Adventures</h3>
+            <p class="project__meta">Culinary &amp; Cultural Tourism · Georgetown</p>
+            <p class="project__desc">A warm, editorial website for Guyana's celebrated food and culture guide. Tours are laid out like a menu, guest reviews appear throughout, and booking is always one tap away for travellers planning from abroad.</p>
+            <ul class="tags"><li>Web Design</li><li>Development</li><li>Booking Flow</li><li>Tourism</li></ul>
+            <div class="project__links">
+              <a class="link-arrow link-arrow--case" href="/work/singing-chef-adventures/">Read the case study <span aria-hidden="true">→</span></a>
+              <a class="link-arrow" href="https://www.singingchefadventures.com/" target="_blank" rel="noopener">Visit live site <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <section class="reviews section--light" id="reviews">
+      <div class="container reviews__inner">
+        <aside class="reviews__summary">
+          <p class="eyebrow">Client reviews</p>
+          <h2 class="section-title" data-split>Real clients. <em>Real reviews.</em></h2>
+          <div class="rating-card">
+            <div class="rating-card__top">
+              <svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.5-4.5 2.4-7.2 2.4-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.9z"/></svg>
+              <span>Google Reviews</span>
+            </div>
+            <div class="rating-card__score"><span data-count="5.0">5.0</span><small>/ 5</small></div>
+            <div class="stars stars--lg" role="img" aria-label="5 out of 5 stars"><i></i><i></i><i></i><i></i><i></i></div>
+            <p class="rating-card__note">A 5.0 average from 6 reviews on Google.</p>
+            <a class="btn btn--dark btn--sm" href="https://maps.google.com/?cid=3596183034083991518" target="_blank" rel="noopener" data-magnetic><span class="btn__label" data-text="Read them on Google">Read them on Google</span><span class="btn__icon" aria-hidden="true">↗</span></a>
+          </div>
+        </aside>
+
+        <div class="reviews__list">
+          <figure class="review review--feature">
+            <div class="review__head">
+              <span class="avatar" style="--hue: 95">J</span>
+              <div><strong>Jessica John</strong><span>Singing Chef Adventures</span></div>
+              <svg class="g-logo g-logo--sm" viewBox="0 0 48 48" aria-label="Google review"><use href="#g"/></svg>
+            </div>
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><i></i><i></i><i></i><i></i><i></i></div>
+            <blockquote>“Shelroy did a wonderful job of our website and posters We are really so pleased with how his suggestions and implementation have <mark>really helped our business grow significantly.</mark> Our website is now something we are really proud of . It looks so professional and is easy to navigate for the customers We loved the design thank you In2uition Media”</blockquote>
+            <figcaption class="review__foot">Jessica and Eon John, Singing Chef Adventures <a href="#singing-chef" class="review__link">See the project <span aria-hidden="true">↑</span></a></figcaption>
+          </figure>
+
+          <figure class="review">
+            <div class="review__head">
+              <span class="avatar" style="--hue: 355">CT</span>
+              <div><strong>Chris Tulsi</strong><span>Local Guide · Website client</span></div>
+              <svg class="g-logo g-logo--sm" viewBox="0 0 48 48" aria-label="Google review"><use href="#g"/></svg>
+            </div>
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><i></i><i></i><i></i><i></i><i></i></div>
+            <blockquote>“Recently, I had the pleasure of working with the In2ition Media team to develop a new website for my company, and I must admit that I was quite impressed with their work. […] They were consistently responsive and communicative. In every sense, <mark>the finished product surpassed my expectations.</mark> The functionality is excellent, and the design is cutting-edge, svelte, and user-friendly. I've been praised so much for the website.”</blockquote>
+          </figure>
+
+          <figure class="review">
+            <div class="review__head">
+              <span class="avatar" style="--hue: 210">DS</span>
+              <div><strong>Dasrat Sugrim</strong><span>Smart Kitchen BB</span></div>
+              <svg class="g-logo g-logo--sm" viewBox="0 0 48 48" aria-label="Google review"><use href="#g"/></svg>
+            </div>
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><i></i><i></i><i></i><i></i><i></i></div>
+            <blockquote>“In2ition Media has truly exceeded my expectations with their work on my website smartkitchenbb.com. Their professionalism and creativity in developing the site were apparent from the very start, and <mark>I was blown away by the final product.</mark>”</blockquote>
+          </figure>
+
+          <figure class="review">
+            <div class="review__head">
+              <span class="avatar" style="--hue: 150">MB</span>
+              <div><strong>Melissa Barran</strong><span>Website client</span></div>
+              <svg class="g-logo g-logo--sm" viewBox="0 0 48 48" aria-label="Google review"><use href="#g"/></svg>
+            </div>
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><i></i><i></i><i></i><i></i><i></i></div>
+            <blockquote>“I had the opportunity to work with In2ition for the first time and the experience was <mark>beyond my expectations.</mark> Mr. Thomas was patient and cooperative throughout the entire process. I am a satisfied client ❤️”</blockquote>
+          </figure>
+
+        </div>
+      </div>
+
+      <!-- shared Google "G" symbol for the small card logos -->
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="g" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2c-2 1.5-4.5 2.4-7.2 2.4-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.9z"/></symbol>
+      </svg>
+    </section>
+
+    <!-- ============ STATEMENT ============ -->
+    <section class="statement section--dark" id="about">
+      <div class="container">
+        <p class="eyebrow">Why it matters</p>
+        <p class="statement__text" data-reveal-words>Your website is the first meeting with every client you'll never meet in person. It should look like the business you've worked hard to build, and it should bring you work.</p>
+        <div class="about">
+          <p>In2ition Media is a web design studio based in Guyana. We take on a small number of projects at a time so each one gets full attention, from the first sketch to launch day and after.</p>
+          <p>Every site is designed and coded from scratch. No page builders and no templates, which means it loads fast, looks right on every phone, and is built to be found on Google.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="services section--light" id="services">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Services</p>
+          <h2 class="section-title" data-split>Everything your website needs, <em>in one studio.</em></h2>
+        </div>
+        <ul class="services__list">
+          <li class="service"><span class="service__num">01</span><h3>Website Design &amp; Development</h3><p>Custom-designed, hand-coded websites built around your brand, your customers and the actions you want them to take.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
+          <li class="service"><span class="service__num">02</span><h3>Search Engine Optimization</h3><p>Technical and on-page SEO so local customers find you on Google, not your competitors.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
+          <li class="service"><span class="service__num">03</span><h3>Hosting &amp; Care</h3><p>Fast, secure hosting with updates, backups and monitoring, so your site is always online and always current.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
+          <li class="service"><span class="service__num">04</span><h3>Social Media &amp; Ads</h3><p>Content and targeted campaigns that send the right people to your new website.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="process section--dark" id="process">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Process</p>
+          <h2 class="section-title" data-split>A clear path from <em>first call to launch.</em></h2>
+        </div>
+        <ol class="process__list">
+          <li><span>01</span><h3>Discovery</h3><p>We learn your business, your customers and what the website needs to achieve.</p></li>
+          <li><span>02</span><h3>Design</h3><p>You see the full design before any code is written, and we refine it with you until it's right.</p></li>
+          <li><span>03</span><h3>Build</h3><p>We hand-code the site for speed, mobile and search, then test it on real devices.</p></li>
+          <li><span>04</span><h3>Launch &amp; Care</h3><p>We launch, hand over, and stay on to keep everything fast, secure and up to date.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact section--light" id="contact">
+      <div class="container contact__inner">
+        <div class="contact__intro">
+          <p class="availability availability--light"><span class="dot"></span> Now booking projects for <strong data-booking-month>November</strong></p>
+          <h2 class="section-title" data-split>Let's build something <em>worth showing off.</em></h2>
+          <p>Tell us a little about your business and what you need. We'll reply within one business day.</p>
+          <div class="contact__direct">
+            <a href="tel:+5926922647">+592 692 2647</a>
+            <a href="https://wa.me/5926922647?text=Hi%20In2ition%20Media%2C%20I%27d%20like%20to%20talk%20about%20a%20website." target="_blank" rel="noopener" class="btn btn--wa" data-magnetic><svg viewBox="0 0 32 32" aria-hidden="true" class="wa-icon"><use href="#wa"/></svg><span class="btn__label" data-text="Chat on WhatsApp">Chat on WhatsApp</span></a>
+          </div>
+        </div>
+
+        <form class="form" id="projectForm" novalidate>
+          <div class="form__row">
+            <label>Your name<input name="name" required autocomplete="name"></label>
+            <label>Business name<input name="business" required autocomplete="organization"></label>
+          </div>
+          <div class="form__row">
+            <label>Email or WhatsApp<input name="contact" required></label>
+            <label>Current website<input name="website" placeholder="Optional" inputmode="url"></label>
+          </div>
+          <fieldset class="form__choices">
+            <legend>What do you need?</legend>
+            <label><input type="radio" name="type" value="New website" checked><span>New website</span></label>
+            <label><input type="radio" name="type" value="Redesign"><span>Redesign</span></label>
+            <label><input type="radio" name="type" value="Website + SEO / Ads"><span>Website + SEO / Ads</span></label>
+          </fieldset>
+          <fieldset class="form__choices">
+            <legend>Project budget</legend>
+            <label><input type="radio" name="budget" value="GY$300k – 500k" checked><span>GY$300k – 500k</span></label>
+            <label><input type="radio" name="budget" value="GY$500k – 1M"><span>GY$500k – 1M</span></label>
+            <label><input type="radio" name="budget" value="GY$1M – 2M"><span>GY$1M – 2M</span></label>
+          </fieldset>
+          <label>Tell us about the project<textarea name="message" rows="4"></textarea></label>
+          <button type="submit" class="btn btn--red btn--full"><span class="btn__label" data-text="Send project details">Send project details</span><span class="btn__icon" aria-hidden="true">→</span></button>
+          <p class="form__note" aria-live="polite">Sends your details to us on WhatsApp.</p>
+        </form>
+      </div>
+    </section>
+  
+</Base>

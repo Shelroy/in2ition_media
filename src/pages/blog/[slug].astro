@@ -1,0 +1,69 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { breadcrumbs, formatDate, readingTime, SITE } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft);
+  return posts.map(post => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const d = post.data;
+const path = `/blog/${post.id}/`;
+
+const schema = [
+  breadcrumbs([
+    { name: 'Home', path: '/' },
+    { name: 'Blog', path: '/blog/' },
+    { name: d.title, path },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: d.title,
+    description: d.description,
+    datePublished: d.pubDate.toISOString(),
+    dateModified: (d.updatedDate ?? d.pubDate).toISOString(),
+    author: { '@type': 'Person', name: d.author },
+    publisher: { '@id': `${SITE.url}/#business` },
+    mainEntityOfPage: new URL(path, SITE.url).href,
+    image: `${SITE.url}/assets/img/og-default.jpg`,
+  },
+];
+---
+<Base title={`${d.title} | In2ition Media`} description={d.description} type="article" schema={schema} noindex={d.draft}>
+  <article>
+    <header class="page-hero page-hero--post section--dark">
+      <div class="hero__bg" aria-hidden="true"><div class="hero__glow"></div></div>
+      <div class="container container--narrow page-hero__inner">
+        <nav class="crumbs" aria-label="Breadcrumb" data-hero-fade>
+          <a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog/">Blog</a>
+        </nav>
+        <h1 class="page-title page-title--post" data-split>{d.title}</h1>
+        <p class="post-meta" data-hero-fade>
+          By {d.author} · <time datetime={d.pubDate.toISOString()}>{formatDate(d.pubDate)}</time> · {readingTime(post.body ?? '')} min read
+          {d.draft && <span class="badge">Draft, not published yet</span>}
+        </p>
+      </div>
+    </header>
+
+    <div class="post-body section--light">
+      <div class="container container--narrow">
+        <div class="prose prose--post">
+          <Content />
+        </div>
+
+        <aside class="post-cta">
+          <p class="eyebrow">Work with us</p>
+          <p class="post-cta__title">Ready for a website that brings you work?</p>
+          <p>We design and build custom websites for businesses across Guyana. Tell us about your project and we'll reply within one business day.</p>
+          <a href="/#contact" class="btn btn--red" data-magnetic><span class="btn__label" data-text="Start a project">Start a project</span><span class="btn__icon" aria-hidden="true">→</span></a>
+        </aside>
+
+        <a class="link-arrow post-back" href="/blog/"><span aria-hidden="true">←</span> All articles</a>
+      </div>
+    </div>
+  </article>
+</Base>

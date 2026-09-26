@@ -1,0 +1,147 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { breadcrumbs, SITE } from '../../data/site';
+
+export async function getStaticPaths() {
+  const all = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+  return all.map((entry, i) => ({
+    params: { slug: entry.id },
+    props: { entry, next: all[(i + 1) % all.length] },
+  }));
+}
+
+const { entry, next } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const path = `/work/${entry.id}/`;
+
+const schema = [
+  breadcrumbs([
+    { name: 'Home', path: '/' },
+    { name: 'Work', path: '/#work' },
+    { name: d.title, path },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: `${d.title} website`,
+    description: d.description,
+    url: new URL(path, SITE.url).href,
+    image: new URL(d.images.desktop, SITE.url).href,
+    creator: { '@id': `${SITE.url}/#business` },
+    about: d.industry,
+    ...(d.review && {
+      review: {
+        '@type': 'Review',
+        reviewBody: d.review.quote,
+        author: { '@type': 'Person', name: d.review.author },
+        reviewRating: { '@type': 'Rating', ratingValue: 5, bestRating: 5 },
+      },
+    }),
+  },
+];
+---
+<Base title={d.seoTitle} description={d.description} image={d.images.desktop.replace('-desktop.webp', '-og.jpg')} type="article" schema={schema}>
+
+  <section class="page-hero section--dark">
+    <div class="hero__bg" aria-hidden="true"><div class="hero__glow"></div></div>
+    <div class="container page-hero__inner">
+      <nav class="crumbs" aria-label="Breadcrumb" data-hero-fade>
+        <a href="/">Home</a><span aria-hidden="true">/</span><a href="/#work">Work</a><span aria-hidden="true">/</span><span aria-current="page">{d.title}</span>
+      </nav>
+      <p class="eyebrow" data-hero-fade>Case study · {d.industry}</p>
+      <h1 class="page-title" data-split>{d.title}</h1>
+      <p class="page-lede" data-hero-fade>{d.summary}</p>
+
+      <dl class="case-meta" data-hero-fade>
+        <div><dt>Client</dt><dd>{d.client}</dd></div>
+        <div><dt>Industry</dt><dd>{d.industry}</dd></div>
+        <div><dt>Location</dt><dd>{d.location}</dd></div>
+        <div><dt>Services</dt><dd>{d.services.join(', ')}</dd></div>
+        <div>
+          <dt>Website</dt>
+          <dd>{d.liveUrl
+            ? <a href={d.liveUrl} target="_blank" rel="noopener" class="case-meta__link">{new URL(d.liveUrl).hostname.replace('www.', '')} ↗</a>
+            : d.status}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="case-visual section--light">
+    <div class="container">
+      <div class="project__media case-visual__media" data-cursor="view">
+        <div class="browser browser--scroll case-visual__browser" data-scroll tabindex="0" aria-label={`${d.title} full homepage preview, hover or focus to scroll`}>
+          <div class="browser__bar"><i></i><i></i><i></i><span>{d.liveUrl ? new URL(d.liveUrl).hostname.replace('www.', '') : d.title.toLowerCase()}</span></div>
+          <div class="browser__viewport"><img src={d.images.full} alt={`${d.title} website homepage designed by In2ition Media`} /></div>
+        </div>
+        <div class="phone"><img src={d.images.mobile} alt={`${d.title} website on a phone`} loading="lazy" width="585" height="1266" /></div>
+      </div>
+      <p class="section-note hint-hover case-visual__hint">Hover over the site to scroll through the full homepage.</p>
+    </div>
+  </section>
+
+  <section class="case-body section--light">
+    <div class="container case-body__inner">
+      <div class="prose">
+        <Content />
+      </div>
+      <aside class="case-body__aside">
+        <p class="eyebrow">Services</p>
+        <ul class="tags">{d.services.map(s => <li>{s}</li>)}</ul>
+        {d.liveUrl && <a class="btn btn--dark btn--sm" href={d.liveUrl} target="_blank" rel="noopener"><span class="btn__label" data-text="Visit the live site">Visit the live site</span><span class="btn__icon" aria-hidden="true">↗</span></a>}
+      </aside>
+    </div>
+  </section>
+
+  <section class="highlights section--dark">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Highlights</p>
+        <h2 class="section-title" data-split>What makes this site <em>work.</em></h2>
+      </div>
+      <ol class="highlights__grid">
+        {d.highlights.map((h, i) => (
+          <li class="highlight">
+            <span class="highlight__num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{h.title}</h3>
+            <p>{h.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  {d.review && (
+    <section class="case-review section--light">
+      <div class="container">
+        <figure class="case-quote">
+          <div class="stars stars--lg" role="img" aria-label="5 out of 5 stars"><i></i><i></i><i></i><i></i><i></i></div>
+          <blockquote>“{d.review.quote}”</blockquote>
+          <figcaption><strong>{d.review.author}</strong><span>{d.review.role}</span></figcaption>
+        </figure>
+      </div>
+    </section>
+  )}
+
+  <section class="next section--light">
+    <div class="container">
+      <a class="next-case" href={`/work/${next.id}/`} data-cursor="view">
+        <div>
+          <p class="eyebrow">Next case study</p>
+          <p class="next-case__title">{next.data.title} <span aria-hidden="true">→</span></p>
+          <p class="next-case__meta">{next.data.industry}</p>
+        </div>
+        <div class="next-case__img"><img src={next.data.images.desktop} alt="" loading="lazy" width="1440" height="900" /></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="cta-band section--light">
+    <div class="container cta-band__inner">
+      <h2 class="section-title" data-split>Want a website like <em>this?</em></h2>
+      <a href="/#contact" class="btn btn--red" data-magnetic><span class="btn__label" data-text="Start a project">Start a project</span><span class="btn__icon" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</Base>

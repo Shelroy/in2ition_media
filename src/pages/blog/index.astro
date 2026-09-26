@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { breadcrumbs, formatDate, readingTime, SITE } from '../../data/site';
+
+// Drafts are visible while previewing locally (npm run dev) but never published.
+const posts = (await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const title = 'Web Design Blog | Website Tips for Guyanese Businesses | In2ition Media';
+const description = 'Practical advice on websites, SEO and getting more customers online, written for business owners in Guyana by the In2ition Media team.';
+const schema = [
+  breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Blog', path: '/blog/' }]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'In2ition Media Blog',
+    url: `${SITE.url}/blog/`,
+    publisher: { '@id': `${SITE.url}/#business` },
+  },
+];
+---
+<Base title={title} description={description} schema={schema}>
+  <section class="page-hero section--dark">
+    <div class="hero__bg" aria-hidden="true"><div class="hero__glow"></div></div>
+    <div class="container page-hero__inner">
+      <p class="eyebrow" data-hero-fade>The In2ition Media blog</p>
+      <h1 class="page-title" data-split>Website advice for <em>Guyanese businesses.</em></h1>
+      <p class="page-lede" data-hero-fade>Straight answers about websites, Google and getting more customers online, from the team that builds them.</p>
+    </div>
+  </section>
+
+  <section class="blog-list section--light">
+    <div class="container">
+      {posts.length === 0 && <p class="blog-empty">New articles are on the way. Check back soon.</p>}
+      <ul class="posts">
+        {posts.map(post => (
+          <li>
+            <a class="post-card" href={`/blog/${post.id}/`}>
+              <div class="post-card__meta">
+                <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+                <span>{readingTime(post.body ?? '')} min read</span>
+                {post.data.draft && <span class="badge">Draft</span>}
+              </div>
+              <h2 class="post-card__title">{post.data.title}</h2>
+              <p class="post-card__desc">{post.data.description}</p>
+              <span class="link-arrow">Read article <span aria-hidden="true">→</span></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>
