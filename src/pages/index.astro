@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { SITE } from '../data/site';
 
-// Turnstile site key is public. Set PUBLIC_TURNSTILE_SITE_KEY in Cloudflare Pages build settings;
+// Turnstile site key is public. Set PUBLIC_TURNSTILE_SITE_KEY under the Worker's Settings → Build → Variables and secrets;
 // the fallback is Cloudflare's always-pass test key for local previews.
 const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
 

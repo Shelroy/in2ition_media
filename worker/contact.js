@@ -1,11 +1,11 @@
 /**
- * POST /api/contact — Cloudflare Pages Function
+ * POST /api/contact — handled by the site's Cloudflare Worker (see worker/index.js)
  *
  * 1. Drops obvious bots (hidden honeypot field).
  * 2. Verifies the Cloudflare Turnstile token server-side.
  * 3. Emails the enquiry via Resend.
  *
- * Environment variables (Cloudflare Pages → Settings → Variables and Secrets):
+ * Runtime variables (Cloudflare → Workers & Pages → in2ition-media → Settings → Variables and Secrets):
  *   TURNSTILE_SECRET_KEY  (secret)   Turnstile widget secret key
  *   RESEND_API_KEY        (secret)   Resend API key
  *   MAIL_TO               (optional) where enquiries go, default shelroy24@gmail.com
@@ -15,12 +15,12 @@
 const LIMITS = { name: 120, business: 160, contact: 200, website: 200, type: 60, budget: 60, message: 5000 };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const json = (body, status = 200) =>
+export const json = (body, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
 
 const escapeHtml = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-export async function onRequestPost({ request, env }) {
+export async function handleContact(request, env) {
   let form;
   try { form = await request.formData(); } catch { return json({ ok: false, error: 'bad-request' }, 400); }
 
@@ -86,5 +86,3 @@ export async function onRequestPost({ request, env }) {
   if (!sent || !sent.ok) return json({ ok: false, error: 'send-failed' }, 502);
   return json({ ok: true });
 }
-
-export const onRequestGet = () => json({ ok: false, error: 'method-not-allowed' }, 405);

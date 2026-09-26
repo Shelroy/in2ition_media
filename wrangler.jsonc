@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "in2ition-media",
+  "main": "worker/index.js",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  // Keep variables that were added in the Cloudflare dashboard when deploying
+  "keep_vars": true,
+  "observability": { "enabled": true }
+}
