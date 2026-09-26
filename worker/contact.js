@@ -30,7 +30,7 @@ export async function handleContact(request, env) {
   // Turnstile verification
   const token = (form.get('cf-turnstile-response') || '').toString();
   if (!token) return json({ ok: false, error: 'verification' }, 400);
-  if (!env.TURNSTILE_SECRET_KEY) return json({ ok: false, error: 'not-configured' }, 500);
+  if (!env.TURNSTILE_SECRET_KEY) { console.error('TURNSTILE_SECRET_KEY is not set'); return json({ ok: false, error: 'not-configured' }, 500); }
   const verify = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
     method: 'POST',
     body: new URLSearchParams({
@@ -39,14 +39,17 @@ export async function handleContact(request, env) {
       remoteip: request.headers.get('CF-Connecting-IP') || '',
     }),
   }).then(r => r.json()).catch(() => ({ success: false }));
-  if (!verify.success) return json({ ok: false, error: 'verification' }, 400);
+  if (!verify.success) {
+    console.warn('Turnstile verification failed', JSON.stringify(verify['error-codes'] || []));
+    return json({ ok: false, error: 'verification' }, 400);
+  }
 
   // Collect and validate fields
   const d = {};
   for (const [key, max] of Object.entries(LIMITS)) d[key] = (form.get(key) || '').toString().trim().slice(0, max);
   if (!d.name || !d.business || !d.contact) return json({ ok: false, error: 'missing-fields' }, 400);
 
-  if (!env.RESEND_API_KEY) return json({ ok: false, error: 'not-configured' }, 500);
+  if (!env.RESEND_API_KEY) { console.error('RESEND_API_KEY is not set'); return json({ ok: false, error: 'not-configured' }, 500); }
 
   const rows = [
     ['Name', d.name],
@@ -83,6 +86,10 @@ export async function handleContact(request, env) {
     body: JSON.stringify(email),
   }).catch(() => null);
 
-  if (!sent || !sent.ok) return json({ ok: false, error: 'send-failed' }, 502);
+  if (!sent || !sent.ok) {
+    // Visible in Cloudflare → Workers & Pages → in2ition-media → Observability / Logs
+    console.error('Resend send failed', sent ? sent.status : 'network error', sent ? await sent.text() : '');
+    return json({ ok: false, error: 'send-failed' }, 502);
+  }
   return json({ ok: true });
 }
