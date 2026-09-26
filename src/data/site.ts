@@ -1,5 +1,8 @@
 // Business details used in SEO tags and Google structured data.
 // Keep these in sync with your Google Business Profile.
+// Changes on every build so browsers fetch fresh CSS/JS after each deploy
+export const BUILD_VERSION = (process.env.WORKERS_CI_COMMIT_SHA || Date.now().toString(36)).slice(0, 8);
+
 export const SITE = {
   url: 'https://in2ition.media',
   name: 'In2ition Media',
