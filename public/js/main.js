@@ -1,7 +1,5 @@
 /* In2ition Media — interactions & motion */
 (() => {
-  // ---- Settings you may want to change ----
-  const WHATSAPP_NUMBER = '5926922647'; // digits only, with country code
 
   const root = document.documentElement;
   const hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
@@ -88,33 +86,79 @@
   });
   window.addEventListener('resize', () => scrollFrames.forEach(setShift));
 
-  /* ---- Project form → WhatsApp ---- */
+  /* ---- Project form → /api/contact (Turnstile-protected email) ---- */
   const form = document.getElementById('projectForm');
   if (form) {
-  const note = form.querySelector('.form__note');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    let firstBad = null;
-    form.querySelectorAll('[required]').forEach(input => {
-      const bad = !input.value.trim();
-      input.classList.toggle('is-invalid', bad);
-      input.setAttribute('aria-invalid', String(bad));
-      if (bad && !firstBad) firstBad = input;
+    const note = form.querySelector('.form__note');
+    const noteDefault = note.innerHTML;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const captcha = form.querySelector('[data-turnstile]');
+    let widgetId = null;
+
+    // Load Turnstile only when the form is close, so it never slows down the first page load
+    const loadTurnstile = () => {
+      if (!captcha || window.__turnstileRequested) return;
+      window.__turnstileRequested = true;
+      window.onTurnstileLoad = () => {
+        widgetId = window.turnstile.render(captcha, { sitekey: captcha.dataset.sitekey, theme: 'light', appearance: 'interaction-only' });
+      };
+      const s = document.createElement('script');
+      s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoad';
+      s.async = true; s.defer = true;
+      document.head.append(s);
+    };
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => { if (entries.some(e => e.isIntersecting)) { loadTurnstile(); io.disconnect(); } }, { rootMargin: '600px' });
+      io.observe(form);
+    } else loadTurnstile();
+    form.addEventListener('focusin', loadTurnstile, { once: true });
+
+    const setNote = (html, isError) => { note.innerHTML = html; note.classList.toggle('is-error', !!isError); };
+    const waLink = '<a href="https://wa.me/5926922647" target="_blank" rel="noopener">message us on WhatsApp</a>';
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      let firstBad = null;
+      form.querySelectorAll('[required]').forEach(input => {
+        const bad = !input.value.trim();
+        input.classList.toggle('is-invalid', bad);
+        input.setAttribute('aria-invalid', String(bad));
+        if (bad && !firstBad) firstBad = input;
+      });
+      if (firstBad) { firstBad.focus(); setNote('Please fill in the highlighted fields.', true); return; }
+
+      const data = new FormData(form);
+      if (!data.get('cf-turnstile-response')) {
+        loadTurnstile();
+        setNote('Just a moment, we\'re checking you\'re not a robot. Then press send again.', true);
+        return;
+      }
+
+      submitBtn.disabled = true; submitBtn.classList.add('is-loading');
+      setNote('Sending…');
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        const out = await res.json().catch(() => ({}));
+        if (res.ok && out.ok) {
+          [...form.children].forEach(el => { if (!el.classList.contains('form__success')) el.hidden = true; });
+          const ok = form.querySelector('.form__success');
+          ok.hidden = false; ok.focus();
+          if (motion) gsap.from(ok, { opacity: 0, y: 20, duration: .8, ease: 'expo.out' });
+          return;
+        }
+        if (out.error === 'verification') setNote('We couldn\'t verify you\'re not a robot. Please try again, or ' + waLink + '.', true);
+        else setNote('Sorry, something went wrong sending your details. Please try again, or ' + waLink + '.', true);
+      } catch {
+        setNote('You seem to be offline. Please try again, or ' + waLink + '.', true);
+      } finally {
+        submitBtn.disabled = false; submitBtn.classList.remove('is-loading');
+        if (window.turnstile && widgetId !== null) window.turnstile.reset(widgetId);
+      }
     });
-    if (firstBad) { firstBad.focus(); note.textContent = 'Please fill in the highlighted fields.'; return; }
-    const d = Object.fromEntries(new FormData(form));
-    const lines = [
-      `Hi In2ition Media, I'd like to start a project.`, ``,
-      `Name: ${d.name}`, `Business: ${d.business}`, `Contact: ${d.contact}`,
-      d.website ? `Current website: ${d.website}` : null,
-      `Need: ${d.type}`, `Budget: ${d.budget}`,
-      d.message ? `\n${d.message}` : null,
-    ].filter(l => l !== null);
-    note.textContent = 'Opening WhatsApp…';
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
-    setTimeout(() => (note.textContent = 'Sends your details to us on WhatsApp.'), 4000);
-  });
-  form.querySelectorAll('[required]').forEach(i => i.addEventListener('input', () => { i.classList.remove('is-invalid'); i.removeAttribute('aria-invalid'); }));
+    form.querySelectorAll('[required]').forEach(i => i.addEventListener('input', () => {
+      i.classList.remove('is-invalid'); i.removeAttribute('aria-invalid');
+      if (note.classList.contains('is-error')) setNote(noteDefault);
+    }));
   }
 
   if (!motion) {

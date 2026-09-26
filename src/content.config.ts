@@ -11,6 +11,7 @@ const blog = defineCollection({
     author: z.string().default('Shelroy Thomas'),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false), // drafts show while previewing but are not published
+    relatedWork: z.string().optional(), // case study id, e.g. singing-chef-adventures
   }),
 });
 
@@ -31,6 +32,7 @@ const work = defineCollection({
     images: z.object({ desktop: z.string(), full: z.string(), mobile: z.string() }),
     highlights: z.array(z.object({ title: z.string(), text: z.string() })),
     review: z.object({ quote: z.string(), author: z.string(), role: z.string() }).optional(),
+    relatedPost: z.string().optional(), // blog post id
   }),
 });
 

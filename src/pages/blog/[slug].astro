@@ -1,5 +1,5 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import { breadcrumbs, formatDate, readingTime, SITE } from '../../data/site';
 
@@ -12,6 +12,10 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 const d = post.data;
 const path = `/blog/${post.id}/`;
+const relatedWork = d.relatedWork ? await getEntry('work', d.relatedWork) : undefined;
+const morePosts = (await getCollection('blog', ({ id, data }) => id !== post.id && (import.meta.env.DEV || !data.draft)))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 2);
 
 const schema = [
   breadcrumbs([
@@ -61,6 +65,28 @@ const schema = [
           <p>We design and build custom websites for businesses across Guyana. Tell us about your project and we'll reply within one business day.</p>
           <a href="/#contact" class="btn btn--red" data-magnetic><span class="btn__label" data-text="Start a project">Start a project</span><span class="btn__icon" aria-hidden="true">→</span></a>
         </aside>
+
+        {(relatedWork || morePosts.length > 0) && (
+          <nav class="keep-reading" aria-label="Keep reading">
+            <p class="eyebrow">Keep reading</p>
+            <div class="keep-reading__grid">
+              {relatedWork && (
+                <a class="related-card related-card--work" href={`/work/${relatedWork.id}/`}>
+                  <img src={relatedWork.data.images.desktop.replace('.webp', '-560.webp')} alt="" loading="lazy" width="560" height="350" />
+                  <span class="related-card__label">Case study</span>
+                  <span class="related-card__title">{relatedWork.data.title}</span>
+                </a>
+              )}
+              {morePosts.map(p => (
+                <a class="related-card" href={`/blog/${p.id}/`}>
+                  <span class="related-card__label">Article</span>
+                  <span class="related-card__title">{p.data.title}</span>
+                  <span class="link-arrow">Read <span aria-hidden="true">→</span></span>
+                </a>
+              ))}
+            </div>
+          </nav>
+        )}
 
         <a class="link-arrow post-back" href="/blog/"><span aria-hidden="true">←</span> All articles</a>
       </div>

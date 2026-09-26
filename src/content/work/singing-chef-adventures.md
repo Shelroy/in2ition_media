@@ -26,6 +26,7 @@ review:
   quote: Shelroy did a wonderful job of our website and posters We are really so pleased with how his suggestions and implementation have really helped our business grow significantly. Our website is now something we are really proud of . It looks so professional and is easy to navigate for the customers We loved the design thank you In2uition Media
   author: Jessica and Eon John
   role: Singing Chef Adventures · Google review
+relatedPost: what-makes-a-great-tourism-website
 ---
 
 ## The goal

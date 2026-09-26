@@ -2,6 +2,10 @@
 import Base from '../layouts/Base.astro';
 import { SITE } from '../data/site';
 
+// Turnstile site key is public. Set PUBLIC_TURNSTILE_SITE_KEY in Cloudflare Pages build settings;
+// the fallback is Cloudflare's always-pass test key for local previews.
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
+
 const title = 'Web Design Guyana | Custom Websites | In2ition Media';
 const description = "In2ition Media is a web design studio in Guyana building fast, custom websites for Guyana's hotels, engineering firms, tour operators and service businesses.";
 const schema = [{
@@ -286,13 +290,14 @@ const schema = [{
           </div>
         </div>
 
-        <form class="form" id="projectForm" novalidate>
+        <form class="form" id="projectForm" action="/api/contact" method="post" novalidate>
+          <div class="hp" aria-hidden="true"><label>Leave this field empty<input name="company_website" tabindex="-1" autocomplete="off"></label></div>
           <div class="form__row">
             <label>Your name<input name="name" required autocomplete="name"></label>
             <label>Business name<input name="business" required autocomplete="organization"></label>
           </div>
           <div class="form__row">
-            <label>Email or WhatsApp<input name="contact" required></label>
+            <label>Email or WhatsApp<input name="contact" required autocomplete="email"></label>
             <label>Current website<input name="website" placeholder="Optional" inputmode="url"></label>
           </div>
           <fieldset class="form__choices">
@@ -308,8 +313,15 @@ const schema = [{
             <label><input type="radio" name="budget" value="GY$1M – 2M"><span>GY$1M – 2M</span></label>
           </fieldset>
           <label>Tell us about the project<textarea name="message" rows="4"></textarea></label>
+          <div class="form__captcha" data-turnstile data-sitekey={turnstileSiteKey}></div>
           <button type="submit" class="btn btn--red btn--full"><span class="btn__label" data-text="Send project details">Send project details</span><span class="btn__icon" aria-hidden="true">→</span></button>
-          <p class="form__note" aria-live="polite">Sends your details to us on WhatsApp.</p>
+          <p class="form__note" role="status" aria-live="polite">Protected by Cloudflare Turnstile. Prefer WhatsApp? <a href="https://wa.me/5926922647" target="_blank" rel="noopener">Message us</a>.</p>
+
+          <div class="form__success" hidden tabindex="-1">
+            <span class="form__success-icon" aria-hidden="true">✓</span>
+            <p class="form__success-title">Thanks, your project details are on their way.</p>
+            <p>We'll reply within one business day. Need a faster answer? <a href="https://wa.me/5926922647" target="_blank" rel="noopener">Message us on WhatsApp</a>.</p>
+          </div>
         </form>
       </div>
     </section>

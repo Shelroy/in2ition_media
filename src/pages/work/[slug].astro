@@ -1,5 +1,5 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import { breadcrumbs, SITE } from '../../data/site';
 
@@ -14,6 +14,7 @@ export async function getStaticPaths() {
 const { entry, next } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
+const related = d.relatedPost ? await getEntry('blog', d.relatedPost) : undefined;
 const path = `/work/${entry.id}/`;
 
 const schema = [
@@ -90,6 +91,13 @@ const schema = [
       <aside class="case-body__aside">
         <p class="eyebrow">Services</p>
         <ul class="tags">{d.services.map(s => <li>{s}</li>)}</ul>
+        {related && !related.data.draft && (
+          <a class="related-card" href={`/blog/${related.id}/`}>
+            <span class="related-card__label">Related reading</span>
+            <span class="related-card__title">{related.data.title}</span>
+            <span class="link-arrow">Read the article <span aria-hidden="true">→</span></span>
+          </a>
+        )}
         {d.liveUrl && <a class="btn btn--dark btn--sm" href={d.liveUrl} target="_blank" rel="noopener"><span class="btn__label" data-text="Visit the live site">Visit the live site</span><span class="btn__icon" aria-hidden="true">↗</span></a>}
       </aside>
     </div>
