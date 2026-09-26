@@ -172,7 +172,11 @@
   };
 
   /* ---- Hero title: word-by-word ---- */
-  const title = document.querySelector('.hero__title');
+  // The full word-by-word reveal only runs behind the desktop intro curtain.
+  // Everywhere else (phones, repeat visits, inner pages) the headline is shown immediately
+  // so the page is readable as soon as it loads.
+  const hasIntro = root.classList.contains('intro') && !!document.querySelector('.loader');
+  const title = hasIntro ? document.querySelector('.hero__title') : null;
   if (title) {
     const lines = title.querySelectorAll('.line__inner');
     lines.forEach((line, i) => {
@@ -185,17 +189,17 @@
     gsap.set('.hero__title .hw', { yPercent: 115, rotate: 4, transformOrigin: '0% 100%' });
     title.classList.add('is-ready');
   }
-  gsap.set('[data-hero-fade]', { opacity: 0, y: 24 });
+  gsap.set('[data-hero-fade]', hasIntro ? { opacity: 0, y: 24 } : { y: 18 });
 
   // Homepage: title words rise, then the rest fades in. Other pages: just the fade.
   const heroTl = gsap.timeline({ paused: true, defaults: { ease: 'expo.out' } });
   if (title) heroTl.to('.hero__title .hw', { yPercent: 0, rotate: 0, duration: 1.4, stagger: .06 });
-  heroTl.to('[data-hero-fade]', { opacity: 1, y: 0, duration: 1.1, stagger: .09 }, title ? .45 : .1);
+  heroTl.to('[data-hero-fade]', { opacity: 1, y: 0, duration: .9, stagger: .07 }, title ? .25 : 0);
   if (document.querySelector('.hero__glow')) {
     heroTl.from('.hero__glow', { opacity: 0, scale: .6, duration: 2.2, ease: 'power2.out' }, 0)
       .from('.hero__grid', { opacity: 0, duration: 2 }, .2);
   }
-  if (title) heroTl.add(() => startRotator(), 1.4);
+  if (document.querySelector('.rotator')) heroTl.add(() => startRotator(), title ? 1.4 : .6);
 
   /* ---- Rotating phrase ---- */
   function startRotator() {
@@ -220,7 +224,7 @@
     try { sessionStorage.setItem('i2m-intro', '1'); } catch (e) {}
     heroTl.play();
   };
-  if (root.classList.contains('intro') && document.querySelector('.loader')) {
+  if (hasIntro) {
     if (lenis) lenis.stop();
     const fontsReady = Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 1200))]);
     gsap.timeline()

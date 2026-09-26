@@ -74,9 +74,9 @@ const schema = [
       <div class="project__media case-visual__media" data-cursor="view">
         <div class="browser browser--scroll case-visual__browser" data-scroll tabindex="0" aria-label={`${d.title} full homepage preview, hover or focus to scroll`}>
           <div class="browser__bar"><i></i><i></i><i></i><span>{d.liveUrl ? new URL(d.liveUrl).hostname.replace('www.', '') : d.title.toLowerCase()}</span></div>
-          <div class="browser__viewport"><img src={d.images.full} alt={`${d.title} website homepage designed by In2ition Media`} /></div>
+          <div class="browser__viewport"><img src={d.images.full.replace('.webp', '-760.webp')} srcset={`${d.images.full.replace('.webp', '-760.webp')} 760w, ${d.images.full} 1440w`} sizes="(max-width: 860px) 92vw, 1160px" alt={`${d.title} website homepage designed by In2ition Media`} decoding="async" /></div>
         </div>
-        <div class="phone"><img src={d.images.mobile} alt={`${d.title} website on a phone`} loading="lazy" width="585" height="1266" /></div>
+        <div class="phone"><img src={d.images.mobile.replace('.webp', '-300.webp')} srcset={`${d.images.mobile.replace('.webp', '-300.webp')} 300w, ${d.images.mobile} 585w`} sizes="(max-width: 860px) 28vw, 280px" alt={`${d.title} website on a phone`} loading="lazy" decoding="async" width="585" height="1266" /></div>
       </div>
       <p class="section-note hint-hover case-visual__hint">Hover over the site to scroll through the full homepage.</p>
     </div>
@@ -133,7 +133,7 @@ const schema = [
           <p class="next-case__title">{next.data.title} <span aria-hidden="true">→</span></p>
           <p class="next-case__meta">{next.data.industry}</p>
         </div>
-        <div class="next-case__img"><img src={next.data.images.desktop} alt="" loading="lazy" width="1440" height="900" /></div>
+        <div class="next-case__img"><img src={next.data.images.desktop.replace('.webp', '-960.webp')} alt="" loading="lazy" decoding="async" width="960" height="600" /></div>
       </a>
     </div>
   </section>
