@@ -28,6 +28,17 @@
     el.textContent = ''; el.append(wrap);
   });
 
+  /* ---- Meta Pixel events ---- */
+  const trackEvent = (event, params) => { try { if (window.fbq) window.fbq('track', event, params); } catch (e) {} };
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    if (href.includes('wa.me/')) trackEvent('Contact', { method: 'whatsapp' });
+    else if (href.startsWith('tel:')) trackEvent('Contact', { method: 'phone' });
+  });
+  if (location.pathname.startsWith('/work/')) trackEvent('ViewContent', { content_name: document.title, content_category: 'Case study' });
+
   /* ---- Nav: scrolled pill, light-section contrast, hide on scroll down ---- */
   const nav = document.getElementById('nav');
   const lightSections = [...document.querySelectorAll('.section--light')];
@@ -140,6 +151,7 @@
         const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
         const out = await res.json().catch(() => ({}));
         if (res.ok && out.ok) {
+          trackEvent('Lead', { content_name: 'Project form', content_category: data.get('type') || '', budget: data.get('budget') || '' });
           [...form.children].forEach(el => { if (!el.classList.contains('form__success')) el.hidden = true; });
           const ok = form.querySelector('.form__success');
           ok.hidden = false; ok.focus();

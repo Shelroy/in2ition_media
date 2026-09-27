@@ -3,7 +3,7 @@
  * Shared page shell: SEO tags, structured data, nav, footer and scripts.
  * Every page on the site uses this so they all look and behave the same.
  */
-import { business, BUILD_VERSION as v, SITE } from '../data/site';
+import { business, BUILD_VERSION as v, META_PIXEL_ID, SITE } from '../data/site';
 
 interface Props {
   title: string;
@@ -51,6 +51,25 @@ const jsonLd = [business, ...schema];
   <link rel="preload" href="/fonts/instrument-serif-italic-0.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href={`/css/style.css?v=${v}`}>
   {jsonLd.map(item => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
+  <script is:inline define:vars={{ pixelId: META_PIXEL_ID }}>
+    // Meta Pixel. Events queue immediately; the Facebook script itself loads after the page
+    // has finished loading so it never slows down what visitors see first.
+    (function (w, d) {
+      if (w.fbq) return;
+      var n = w.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!w._fbq) w._fbq = n;
+      n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
+      w.addEventListener('load', function () {
+        setTimeout(function () {
+          var s = d.createElement('script'); s.async = true;
+          s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+          d.head.appendChild(s);
+        }, 1200);
+      });
+    })(window, document);
+    fbq('init', pixelId);
+    fbq('track', 'PageView');
+  </script>
   <script is:inline>
     // Flag motion support before first paint so hidden-until-animated states never flash
     (function () {
@@ -62,6 +81,7 @@ const jsonLd = [business, ...schema];
   </script>
 </head>
 <body>
+  <noscript><img height="1" width="1" style="display:none" alt="" src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}></noscript>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wa" viewBox="0 0 32 32"><path fill="currentColor" d="M16.04 3C9.08 3 3.43 8.64 3.43 15.6c0 2.22.58 4.4 1.69 6.31L3.33 28.5l6.76-1.77a12.56 12.56 0 0 0 5.95 1.51h.01c6.96 0 12.61-5.65 12.61-12.61C28.66 8.64 23 3 16.04 3zm0 23.1h-.01a10.45 10.45 0 0 1-5.33-1.46l-.38-.23-4.01 1.05 1.07-3.91-.25-.4a10.45 10.45 0 0 1-1.6-5.55c0-5.78 4.7-10.48 10.5-10.48 2.8 0 5.44 1.09 7.42 3.07a10.42 10.42 0 0 1 3.07 7.42c0 5.79-4.7 10.49-10.48 10.49zm5.75-7.85c-.31-.16-1.86-.92-2.15-1.02-.29-.11-.5-.16-.71.16-.21.31-.81 1.02-1 1.23-.18.21-.37.24-.68.08-.31-.16-1.33-.49-2.53-1.56-.94-.83-1.57-1.86-1.75-2.18-.18-.31-.02-.48.14-.64.14-.14.31-.37.47-.55.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.55-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.53-.71-.54h-.6c-.21 0-.55.08-.84.39-.29.31-1.1 1.08-1.1 2.63s1.13 3.05 1.28 3.26c.16.21 2.22 3.38 5.37 4.74.75.32 1.34.52 1.8.66.75.24 1.44.21 1.98.13.6-.09 1.86-.76 2.12-1.5.26-.73.26-1.37.18-1.5-.08-.13-.29-.21-.6-.37z"/></symbol></svg>
   <a class="skip" href="#main">Skip to content</a>
 

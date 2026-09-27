@@ -3,6 +3,9 @@
 // Changes on every build so browsers fetch fresh CSS/JS after each deploy
 export const BUILD_VERSION = (process.env.WORKERS_CI_COMMIT_SHA || Date.now().toString(36)).slice(0, 8);
 
+// Meta (Facebook) Pixel
+export const META_PIXEL_ID = '301520756942420';
+
 export const SITE = {
   url: 'https://in2ition.media',
   name: 'In2ition Media',
