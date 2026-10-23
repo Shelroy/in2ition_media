@@ -8,7 +8,7 @@ industry: Standby Power Engineering
 location: Guyana
 summary: A corporate website for an authorized agent of global power brands, organising a large catalogue of power services into a clear path to an enquiry.
 services: [Web Design, Development, Multilingual, Lead Capture]
-status: Launching soon
+liveUrl: https://specompower.com/
 images:
   desktop: /assets/img/work/specom-desktop.webp
   full: /assets/img/work/specom-full.webp
