@@ -13,6 +13,7 @@ const blog = defineCollection({
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false), // drafts show while previewing but are not published
     relatedWork: z.string().optional(), // case study id, e.g. singing-chef-adventures
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).optional(), // also written as an FAQ section in the post body
   }),
 });
 

@@ -35,6 +35,11 @@ const schema = [
     mainEntityOfPage: new URL(path, SITE.url).href,
     image: `${SITE.url}/assets/img/og-default.jpg`,
   },
+  ...(d.faq?.length ? [{
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: d.faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  }] : []),
 ];
 ---
 <Base title={d.seoTitle ?? `${d.title} | In2ition Media`} description={d.description} type="article" schema={schema} noindex={d.draft}>
