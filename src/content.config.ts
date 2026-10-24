@@ -38,4 +38,21 @@ const work = defineCollection({
   }),
 });
 
-export const collections = { blog, work };
+const services = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/services' }),
+  schema: z.object({
+    title: z.string(),                 // H1
+    seoTitle: z.string(),              // browser tab / Google title, keep under ~60 characters
+    description: z.string(),           // keep under ~155 characters
+    order: z.number(),
+    serviceType: z.string(),           // used in Service structured data
+    lede: z.string(),
+    included: z.array(z.object({ title: z.string(), text: z.string() })),
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
+    relatedWork: z.string().optional(), // case study id
+    relatedPost: z.string().optional(), // blog post id
+    draft: z.boolean().default(false),  // drafts show while previewing but are not published
+  }),
+});
+
+export const collections = { blog, work, services };

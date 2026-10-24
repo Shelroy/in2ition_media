@@ -3,6 +3,7 @@
  * Shared page shell: SEO tags, structured data, nav, footer and scripts.
  * Every page on the site uses this so they all look and behave the same.
  */
+import { getCollection } from 'astro:content';
 import { business, BUILD_VERSION as v, META_PIXEL_ID, SITE } from '../data/site';
 
 interface Props {
@@ -21,6 +22,7 @@ const ogImage = new URL(image, SITE.url).href;
 const h = isHome ? '' : '/'; // section links point back to the homepage from other pages
 const path = Astro.url.pathname;
 const jsonLd = [business, ...schema];
+const services = (await getCollection('services', ({ data }) => import.meta.env.DEV || !data.draft)).sort((a, b) => a.data.order - b.data.order);
 ---
 <!doctype html>
 <html lang="en">
@@ -146,6 +148,12 @@ const jsonLd = [business, ...schema];
           <a href="/work/specom/">Specom</a>
           <a href="/work/singing-chef-adventures/">Singing Chef Adventures</a>
         </div>
+        {services.length > 0 && (
+          <div>
+            <p class="footer__heading">Services</p>
+            {services.map(s => <a href={`/services/${s.id}/`}>{s.data.title.replace(' in Guyana', '')}</a>)}
+          </div>
+        )}
         <div>
           <p class="footer__heading">Studio</p>
           <a href={`${h}#services`}>Services</a>

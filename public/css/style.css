@@ -590,7 +590,7 @@ a:hover .r > span, button:hover .r > span, a:focus-visible .r > span { transform
 .link-arrow--case { color: var(--ink); }
 
 /* ---------- Footer links ---------- */
-.footer__links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; padding: 48px 0; border-bottom: 1px solid var(--line-dark); }
+.footer__links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding: 48px 0; border-bottom: 1px solid var(--line-dark); }
 .footer__links > div { display: grid; gap: 10px; align-content: start; }
 .footer__heading { font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--on-dark-muted); margin-bottom: 6px; }
 .footer__links a, .footer__links address { color: var(--white); font-style: normal; transition: color var(--t-fast); justify-self: start; }
@@ -600,6 +600,12 @@ a:hover .r > span, button:hover .r > span, a:focus-visible .r > span { transform
 .container--narrow { max-width: 820px; }
 .page-hero { position: relative; overflow: hidden; padding: clamp(150px, 20vh, 200px) 0 clamp(64px, 9vw, 110px); --mx: 78%; --my: 10%; }
 .page-hero__inner { position: relative; }
+.page-hero__actions { margin-top: 36px; }
+.service-links { list-style: none; padding: 0; margin: 0 0 12px; display: grid; gap: 10px; }
+.service-links a { font-weight: 500; text-decoration: underline; text-decoration-color: var(--red); text-underline-offset: 4px; }
+.service-links a:hover { color: var(--red); }
+.service__link { position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
+.service__link:focus-visible { outline: 2px solid var(--red); outline-offset: -2px; }
 .crumbs { display: flex; flex-wrap: wrap; gap: 10px; font-size: 14px; color: var(--on-dark-muted); margin-bottom: 36px; }
 .crumbs a { color: var(--white); }
 .crumbs a:hover { color: var(--red); }

@@ -1,0 +1,122 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { breadcrumbs, SITE } from '../../data/site';
+
+export async function getStaticPaths() {
+  const all = (await getCollection('services', ({ data }) => import.meta.env.DEV || !data.draft))
+    .sort((a, b) => a.data.order - b.data.order);
+  return all.map(entry => ({ params: { slug: entry.id }, props: { entry, others: all.filter(o => o.id !== entry.id) } }));
+}
+
+const { entry, others } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const path = `/services/${entry.id}/`;
+const relatedWork = d.relatedWork ? await getEntry('work', d.relatedWork) : undefined;
+const relatedPost = d.relatedPost ? await getEntry('blog', d.relatedPost) : undefined;
+
+const schema = [
+  breadcrumbs([
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/#services' },
+    { name: d.title, path },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: d.title,
+    serviceType: d.serviceType,
+    description: d.description,
+    url: new URL(path, SITE.url).href,
+    provider: { '@id': `${SITE.url}/#business` },
+    areaServed: { '@type': 'Country', name: 'Guyana' },
+  },
+  ...(d.faq.length ? [{
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: d.faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  }] : []),
+];
+---
+<Base title={d.seoTitle} description={d.description} schema={schema} noindex={d.draft}>
+
+  <section class="page-hero section--dark">
+    <div class="hero__bg" aria-hidden="true"><div class="hero__glow"></div></div>
+    <div class="container page-hero__inner">
+      <nav class="crumbs" aria-label="Breadcrumb" data-hero-fade>
+        <a href="/">Home</a><span aria-hidden="true">/</span><a href="/#services">Services</a><span aria-hidden="true">/</span><span aria-current="page">{d.title}</span>
+      </nav>
+      <p class="eyebrow" data-hero-fade>Service · Guyana {d.draft && <span class="badge">Draft, not published yet</span>}</p>
+      <h1 class="page-title page-title--post" data-split>{d.title}</h1>
+      <p class="page-lede" data-hero-fade>{d.lede}</p>
+      <div class="hero__actions page-hero__actions" data-hero-fade>
+        <a href="/#contact" class="btn btn--red" data-magnetic><span class="btn__label" data-text="Start a project">Start a project</span><span class="btn__icon" aria-hidden="true">→</span></a>
+        <a href="https://wa.me/5926922647" target="_blank" rel="noopener" class="btn btn--ghost" data-magnetic><span class="btn__label" data-text="Chat on WhatsApp">Chat on WhatsApp</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-body section--light">
+    <div class="container case-body__inner">
+      <div class="prose">
+        <Content />
+      </div>
+      <aside class="case-body__aside">
+        <p class="eyebrow">Other services</p>
+        <ul class="service-links">
+          {others.map(o => <li><a href={`/services/${o.id}/`}>{o.data.title}</a></li>)}
+          <li><a href="/blog/how-much-does-a-website-cost-in-guyana/">Website prices in Guyana</a></li>
+        </ul>
+        {relatedWork && (
+          <a class="related-card" href={`/work/${relatedWork.id}/`}>
+            <span class="related-card__label">Case study</span>
+            <span class="related-card__title">{relatedWork.data.title} website</span>
+            <span class="link-arrow">See the project <span aria-hidden="true">→</span></span>
+          </a>
+        )}
+        {relatedPost && !relatedPost.data.draft && (
+          <a class="related-card" href={`/blog/${relatedPost.id}/`}>
+            <span class="related-card__label">Related reading</span>
+            <span class="related-card__title">{relatedPost.data.title}</span>
+            <span class="link-arrow">Read the article <span aria-hidden="true">→</span></span>
+          </a>
+        )}
+      </aside>
+    </div>
+  </section>
+
+  <section class="highlights section--dark">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">What's included</p>
+        <h2 class="section-title" data-split>What you <em>get.</em></h2>
+      </div>
+      <ol class="highlights__grid">
+        {d.included.map((item, i) => (
+          <li class="highlight">
+            <span class="highlight__num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  {d.faq.length > 0 && (
+    <section class="case-body section--light">
+      <div class="container container--narrow prose">
+        <h2>Frequently asked questions</h2>
+        {d.faq.map(f => (<><h3>{f.q}</h3><p>{f.a}</p></>))}
+      </div>
+    </section>
+  )}
+
+  <section class="cta-band section--light">
+    <div class="container cta-band__inner">
+      <h2 class="section-title" data-split>Ready to get <em>started?</em></h2>
+      <a href="/#contact" class="btn btn--red" data-magnetic><span class="btn__label" data-text="Start a project">Start a project</span><span class="btn__icon" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</Base>

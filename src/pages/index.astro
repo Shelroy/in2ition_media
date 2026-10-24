@@ -1,6 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
 import { SITE } from '../data/site';
+
+// Service rows link to their own page once it's published (drafts only link while previewing)
+const liveServices = new Set((await getCollection('services', ({ data }) => import.meta.env.DEV || !data.draft)).map(s => s.id));
+const serviceHref = (id: string) => (liveServices.has(id) ? `/services/${id}/` : undefined);
 
 // Turnstile site key is public. Set PUBLIC_TURNSTILE_SITE_KEY under the Worker's Settings → Build → Variables and secrets;
 // the fallback is Cloudflare's always-pass test key for local previews.
@@ -264,10 +269,10 @@ const schema = [{
           <h2 class="section-title" data-split>Everything your website needs, <em>in one studio.</em></h2>
         </div>
         <ul class="services__list">
-          <li class="service"><span class="service__num">01</span><h3>Website Design &amp; Development</h3><p>Custom-designed, hand-coded websites built around your brand, your customers and the actions you want them to take.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
-          <li class="service"><span class="service__num">02</span><h3>Search Engine Optimization</h3><p>Technical and on-page SEO so local customers find you on Google, not your competitors.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
-          <li class="service"><span class="service__num">03</span><h3>Hosting &amp; Care</h3><p>Fast, secure hosting with updates, backups and monitoring, so your site is always online and always current.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
-          <li class="service"><span class="service__num">04</span><h3>Social Media &amp; Ads</h3><p>Content and targeted campaigns that send the right people to your new website.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
+          <li class="service"><a class="service__link" href="/blog/how-much-does-a-website-cost-in-guyana/" aria-label="Website design and development: see prices"></a><span class="service__num">01</span><h3>Website Design &amp; Development</h3><p>Custom-designed, hand-coded websites built around your brand, your customers and the actions you want them to take.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
+          <li class="service">{serviceHref('seo-guyana') && <a class="service__link" href={serviceHref('seo-guyana')} aria-label="SEO services in Guyana"></a>}<span class="service__num">02</span><h3>Search Engine Optimization</h3><p>Technical and on-page SEO so local customers find you on Google, not your competitors.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
+          <li class="service">{serviceHref('website-hosting-guyana') && <a class="service__link" href={serviceHref('website-hosting-guyana')} aria-label="Website hosting and care in Guyana"></a>}<span class="service__num">03</span><h3>Hosting &amp; Care</h3><p>Fast, secure hosting with updates, backups and monitoring, so your site is always online and always current.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
+          <li class="service">{serviceHref('social-media-ads-guyana') && <a class="service__link" href={serviceHref('social-media-ads-guyana')} aria-label="Social media and ads in Guyana"></a>}<span class="service__num">04</span><h3>Social Media &amp; Ads</h3><p>Content and targeted campaigns that send the right people to your new website.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
         </ul>
       </div>
     </section>
