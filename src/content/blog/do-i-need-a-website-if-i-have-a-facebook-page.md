@@ -1,5 +1,6 @@
 ---
 title: Do You Need a Website If Your Business Already Has a Facebook Page?
+seoTitle: Do You Need a Website If You Have a Facebook Page?
 description: Many Guyanese businesses run entirely on Facebook and WhatsApp. Here's what a website adds, when you can wait, and when it starts costing you customers.
 pubDate: 2026-09-26
 tags: [Websites, Small business, Social media]
@@ -9,6 +10,8 @@ draft: false
 It's one of the questions we hear most from business owners in Guyana: *"I already have a Facebook page and customers message me on WhatsApp. Why do I need a website?"*
 
 It's a fair question. Facebook is free, your customers are already on it, and for plenty of businesses it's where the first sale happened. So let's be honest about what a website does and doesn't add.
+
+**The short answer:** yes, once you want customers who don't already follow you. Facebook keeps you in front of people who know you. A website is what new customers find when they search Google, and it makes your business look established enough to win bigger jobs.
 
 ## What Facebook does well
 

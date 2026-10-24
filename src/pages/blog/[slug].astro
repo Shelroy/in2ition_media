@@ -37,7 +37,7 @@ const schema = [
   },
 ];
 ---
-<Base title={`${d.title} | In2ition Media`} description={d.description} type="article" schema={schema} noindex={d.draft}>
+<Base title={d.seoTitle ?? `${d.title} | In2ition Media`} description={d.description} type="article" schema={schema} noindex={d.draft}>
   <article>
     <header class="page-hero page-hero--post section--dark">
       <div class="hero__bg" aria-hidden="true"><div class="hero__glow"></div></div>

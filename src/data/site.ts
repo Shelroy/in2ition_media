@@ -28,7 +28,9 @@ export const business = {
     addressCountry: 'GY',
   },
   areaServed: { '@type': 'Country', name: 'Guyana' },
-  knowsAbout: ['Web design', 'Website development', 'Search engine optimization', 'Website hosting'],
+  founder: { '@type': 'Person', name: 'Shelroy Thomas' },
+  priceRange: 'GY$300,000+',
+  knowsAbout: ['Web design', 'Website development', 'Search engine optimization', 'Website hosting', 'Social media marketing'],
   sameAs: [
     'https://www.facebook.com/in2itionmedia/',
     'https://www.instagram.com/in2ition.media',

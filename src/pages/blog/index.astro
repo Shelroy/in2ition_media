@@ -7,7 +7,7 @@ import { breadcrumbs, formatDate, readingTime, SITE } from '../../data/site';
 const posts = (await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const title = 'Web Design Blog | Website Tips for Guyanese Businesses | In2ition Media';
+const title = 'Website & SEO Tips for Guyana Businesses | In2ition Media';
 const description = 'Practical advice on websites, SEO and getting more customers online, written for business owners in Guyana by the In2ition Media team.';
 const schema = [
   breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Blog', path: '/blog/' }]),

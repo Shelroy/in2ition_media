@@ -288,6 +288,8 @@ a:hover .r > span, button:hover .r > span, a:focus-visible .r > span { transform
 
 .hero__inner { position: relative; max-width: 1400px; }
 .hero__title { font-size: clamp(42px, 7.6vw, 118px); letter-spacing: -0.045em; line-height: .98; margin: 32px 0 48px; }
+.hero__eyebrow { margin: 32px 0 0; }
+.hero__eyebrow + .hero__title { margin-top: 18px; }
 .hero__title .line { display: block; overflow: hidden; padding-bottom: .08em; margin-bottom: -.04em; }
 .hero__title .line__inner { display: inline-block; will-change: transform; }
 .hero__title .hw { display: inline-block; will-change: transform; }

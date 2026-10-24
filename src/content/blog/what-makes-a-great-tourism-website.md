@@ -1,6 +1,7 @@
 ---
 title: "What Makes a Great Tourism Website? Lessons From Building Singing Chef Adventures"
-description: Tour operators and guesthouses in Guyana compete for travellers who are planning from abroad. Here's what we learned designing a booking website for Singing Chef Adventures.
+seoTitle: What Makes a Great Tourism Website? 6 Lessons | In2ition Media
+description: Six lessons from building the Singing Chef Adventures booking site, for tour operators and guesthouses in Guyana selling to travellers abroad.
 pubDate: 2026-09-26
 tags: [Tourism, Case study, Web design]
 draft: false

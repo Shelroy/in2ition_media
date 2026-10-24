@@ -1,6 +1,6 @@
 ---
 title: Specom
-seoTitle: Specom Website | Power Engineering Web Design Case Study, Guyana
+seoTitle: Specom Website | Engineering Web Design Case Study
 description: How In2ition Media designed a corporate website for Specom, a standby power engineering company and authorized agent of global power brands in Guyana.
 order: 2
 client: Specom

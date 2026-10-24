@@ -5,6 +5,7 @@ const blog = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
   schema: z.object({
     title: z.string(),
+    seoTitle: z.string().optional(),  // browser tab / Google title if the H1 is too long (keep under ~60 characters)
     description: z.string(),          // shown in Google results, keep under ~155 characters
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),

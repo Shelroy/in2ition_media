@@ -1,6 +1,6 @@
 ---
 title: Singing Chef Adventures
-seoTitle: Singing Chef Adventures Website | Tourism Web Design Case Study, Guyana
+seoTitle: "Tourism Website Case Study: Singing Chef Adventures"
 description: How In2ition Media designed a warm, editorial booking website for Singing Chef Adventures, Guyana's celebrated food and culture tour guide.
 order: 3
 client: Singing Chef Adventures
