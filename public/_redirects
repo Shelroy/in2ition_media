@@ -21,8 +21,8 @@
 /accommodation/*      /            301
 
 # Old WordPress posts, sent to the closest current page (and their /feed/ URLs).
-# Exact URLs, not splats, where a broader /2023/* or /category/* rule below would also match:
-# Cloudflare doesn't reliably pick the more specific splat.
+# Exact URLs only under /2023/ and /category/: on Cloudflare's edge a broad splat
+# like /2023/* wins over an exact rule, so don't add catch-alls for these paths.
 /2023/03/16/why-every-business-needs-a-professional-website-boost-your-online-presence-with-in2ition-media/  /blog/do-i-need-a-website-if-i-have-a-facebook-page/  301
 /2023/03/16/why-every-business-needs-a-professional-website-boost-your-online-presence-with-in2ition-media/feed/  /blog/do-i-need-a-website-if-i-have-a-facebook-page/  301
 /2023/03/17/the-leader-in-website-design-in-guyana-in2ition-media/  /services/website-design-guyana/  301
@@ -35,10 +35,7 @@
 /category/website-design/feed/  /services/website-design-guyana/  301
 /category/responsive-design/  /services/website-design-guyana/  301
 /category/responsive-design/feed/  /services/website-design-guyana/  301
-/category/*           /blog/       301
 /author/*             /blog/       301
-/2023/*               /blog/       301
-/2024/*               /blog/       301
 /feed/                /blog/       301
 /comments/feed/       /blog/       301
 
