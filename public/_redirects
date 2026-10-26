@@ -11,3 +11,36 @@
 # No privacy policy page yet; send visitors home until one is written.
 /privacy-policy.html  /            301
 /privacy-policy/      /            301
+
+# Pages from the old WordPress site (found via the Wayback Machine).
+/about-us/            /#about      301
+/why-us/              /#about      301
+/request-a-quote/     /#contact    301
+/sample-page/         /            301
+/availability/        /            301
+/accommodation/*      /            301
+
+# Old WordPress posts, sent to the closest current page (and their /feed/ URLs).
+/2023/03/16/why-every-business-needs-a-professional-website-boost-your-online-presence-with-in2ition-media/*  /blog/do-i-need-a-website-if-i-have-a-facebook-page/  301
+/2023/03/17/the-leader-in-website-design-in-guyana-in2ition-media/*  /services/website-design-guyana/  301
+/2023/03/22/website-design-in-guyana/*  /services/website-design-guyana/  301
+/responsive-website-design-in-guyana-the-caribbean-unlock-online-success/*  /services/website-design-guyana/  301
+/optimizing-for-success-seo-strategies-for-website-designers-in-guyana-and-the-caribbean/*  /services/seo-guyana/  301
+/category/website-design/*     /services/website-design-guyana/  301
+/category/responsive-design/*  /services/website-design-guyana/  301
+/category/*           /blog/       301
+/author/*             /blog/       301
+/2023/*               /blog/       301
+/2024/*               /blog/       301
+/feed/                /blog/       301
+/comments/feed/       /blog/       301
+
+# Old WordPress sitemaps point to the current one.
+/sitemap.xml          /sitemap-index.xml  301
+/sitemap_index.xml    /sitemap-index.xml  301
+/post-sitemap.xml     /sitemap-index.xml  301
+/page-sitemap.xml     /sitemap-index.xml  301
+/category-sitemap.xml /sitemap-index.xml  301
+/author-sitemap.xml   /sitemap-index.xml  301
+
+# The random /xxxx/yyyy.xml URLs from the 2023 WordPress spam hack stay 404 on purpose.
