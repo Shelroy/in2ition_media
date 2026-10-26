@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = 'Page Not Found | In2ition Media';
+const description = 'The page you were looking for has moved or no longer exists.';
+---
+<Base title={title} description={description} noindex>
+  <section class="page-hero section--dark">
+    <div class="hero__bg" aria-hidden="true"><div class="hero__glow"></div></div>
+    <div class="container page-hero__inner">
+      <p class="eyebrow" data-hero-fade>404 · Page not found</p>
+      <h1 class="page-title" data-split>This page has <em>moved on.</em></h1>
+      <p class="page-lede" data-hero-fade>The link may be old or mistyped. Here are the best places to pick up from.</p>
+      <div class="hero__actions" data-hero-fade>
+        <a href="/" class="btn btn--red" data-magnetic><span class="btn__label" data-text="Go to homepage">Go to homepage</span><span class="btn__icon" aria-hidden="true">→</span></a>
+        <a href="/#work" class="btn btn--ghost" data-magnetic><span class="btn__label" data-text="See our work">See our work</span></a>
+        <a href="/blog/" class="btn btn--ghost" data-magnetic><span class="btn__label" data-text="Read the blog">Read the blog</span></a>
+      </div>
+    </div>
+  </section>
+</Base>
