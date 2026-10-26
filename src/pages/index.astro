@@ -13,12 +13,25 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x0000000
 
 const title = 'Web Design Guyana | Custom Websites | In2ition Media';
 const description = "In2ition Media is a web design studio in Guyana building fast, custom websites for Guyana's hotels, engineering firms, tour operators and service businesses.";
+// Questions Guyanese buyers ask Google ("People also ask"); also written out in the FAQ section below
+const faq = [
+  { q: 'How much does a website cost in Guyana?', a: 'Our custom websites start at GY$300,000 for a small business site. Larger business sites cost GY$500,000 to GY$1M, and custom builds with bookings, catalogues or calculators run GY$1M to GY$2M or more.' },
+  { q: 'How long does it take to build a website?', a: 'A small business website usually takes three to five weeks from the first call to launch. Larger or custom sites take six to ten weeks, depending mostly on how quickly content and feedback come in.' },
+  { q: 'Do I need a website if I already have a Facebook page?', a: "Yes, if you want customers to find you on Google. A Facebook page is rented space with limited control, while a website is yours, shows up in Google searches and gives customers a clear way to call, message or book." },
+  { q: 'Will my website show up on Google?', a: 'Every website we build includes on-page SEO from day one: page titles, descriptions, clean URLs, a sitemap and structured data. For competitive searches we also offer ongoing SEO to help you rank higher.' },
+  { q: 'Where are you based, and do you work outside Georgetown?', a: "We're based at 211 Albert St, Georgetown, and work with businesses across Guyana. Most of each project happens over calls, WhatsApp and email." },
+];
+
 const schema = [{
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: SITE.name,
   url: `${SITE.url}/`,
   publisher: { '@id': `${SITE.url}/#business` },
+}, {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 }];
 ---
 <Base title={title} description={description} schema={schema} isHome>
@@ -269,7 +282,7 @@ const schema = [{
           <h2 class="section-title" data-split>Everything your website needs, <em>in one studio.</em></h2>
         </div>
         <ul class="services__list">
-          <li class="service"><a class="service__link" href="/blog/how-much-does-a-website-cost-in-guyana/" aria-label="Website design and development: see prices"></a><span class="service__num">01</span><h3>Website Design &amp; Development</h3><p>Custom-designed, hand-coded websites built around your brand, your customers and the actions you want them to take.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
+          <li class="service"><a class="service__link" href={serviceHref('website-design-guyana') ?? '/blog/how-much-does-a-website-cost-in-guyana/'} aria-label="Website design in Guyana"></a><span class="service__num">01</span><h3>Website Design &amp; Development</h3><p>Custom-designed, hand-coded websites built around your brand, your customers and the actions you want them to take.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
           <li class="service">{serviceHref('seo-guyana') && <a class="service__link" href={serviceHref('seo-guyana')} aria-label="SEO services in Guyana"></a>}<span class="service__num">02</span><h3>Search Engine Optimization</h3><p>Technical and on-page SEO so local customers find you on Google, not your competitors.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
           <li class="service">{serviceHref('website-hosting-guyana') && <a class="service__link" href={serviceHref('website-hosting-guyana')} aria-label="Website hosting and care in Guyana"></a>}<span class="service__num">03</span><h3>Hosting &amp; Care</h3><p>Fast, secure hosting with updates, backups and monitoring, so your site is always online and always current.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
           <li class="service">{serviceHref('social-media-ads-guyana') && <a class="service__link" href={serviceHref('social-media-ads-guyana')} aria-label="Social media and ads in Guyana"></a>}<span class="service__num">04</span><h3>Social Media &amp; Ads</h3><p>Content and targeted campaigns that send the right people to your new website.</p><span class="service__arrow" aria-hidden="true">↗</span></li>
@@ -290,6 +303,14 @@ const schema = [{
           <li><span>03</span><h3>Build</h3><p>We hand-code the site for speed, mobile and search, then test it on real devices.</p></li>
           <li><span>04</span><h3>Launch &amp; Care</h3><p>We launch, hand over, and stay on to keep everything fast, secure and up to date.</p></li>
         </ol>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="case-body section--light" id="faq">
+      <div class="container container--narrow prose">
+        <h2>Frequently asked questions</h2>
+        {faq.map(f => (<><h3>{f.q}</h3><p>{f.a}</p></>))}
       </div>
     </section>
 
