@@ -32,14 +32,8 @@ const schema = [
     image: new URL(d.images.desktop, SITE.url).href,
     creator: { '@id': `${SITE.url}/#business` },
     about: d.industry,
-    ...(d.review && {
-      review: {
-        '@type': 'Review',
-        reviewBody: d.review.quote,
-        author: { '@type': 'Person', name: d.review.author },
-        reviewRating: { '@type': 'Rating', ratingValue: 5, bestRating: 5 },
-      },
-    }),
+    // The client quote is shown on the page but not marked up as a Review: Google rejects reviews on a
+    // CreativeWork and never shows stars for reviews a business publishes about itself.
   },
 ];
 ---
