@@ -685,6 +685,19 @@ a:hover .r > span, button:hover .r > span, a:focus-visible .r > span { transform
 .post-card__title { font-size: clamp(24px, 2.4vw, 32px); letter-spacing: -0.03em; line-height: 1.15; }
 .post-card__desc { color: var(--on-light-muted); }
 .post-card .link-arrow { justify-self: start; margin-top: 8px; }
+
+/* "More projects" cards under the homepage showcase */
+.more-work { margin-top: clamp(110px, 14vw, 180px); }
+.more-work__title { font-size: clamp(28px, 3vw, 40px); margin-bottom: 28px; }
+.more-work__grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.more-card { display: grid; gap: 12px; align-content: start; height: 100%; padding: clamp(20px, 2.4vw, 28px); border-radius: 22px; background: var(--white); box-shadow: 0 0 0 1px var(--line-light); transition: box-shadow var(--t-med) var(--ease-out); }
+.more-card:hover { box-shadow: 0 34px 70px -34px rgba(11,11,12,.3), 0 0 0 1px var(--line-light); }
+.more-card__img { display: block; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px var(--line-light); margin-bottom: 8px; }
+.more-card__img img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; transition: transform 1s var(--ease-out); }
+.more-card:hover .more-card__img img { transform: scale(1.04); }
+.more-card__meta { font-size: 14px; font-weight: 500; color: var(--on-light-muted); }
+.more-card__name { font-size: clamp(24px, 2.4vw, 30px); letter-spacing: -0.03em; line-height: 1.15; margin: 0; }
+.more-card__desc { color: #34343a; margin-bottom: 6px; }
 .badge { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; background: #fff3cd; color: #7a5b00; }
 
 .page-hero--post { padding-bottom: clamp(56px, 7vw, 90px); }
@@ -745,7 +758,7 @@ a:hover .r > span, button:hover .r > span, a:focus-visible .r > span { transform
   .case-meta { grid-template-columns: 1fr 1fr; }
   .case-body__inner { grid-template-columns: 1fr; }
   .case-body__aside { position: static; }
-  .highlights__grid, .posts { grid-template-columns: 1fr; }
+  .highlights__grid, .posts, .more-work__grid { grid-template-columns: 1fr; }
   .next-case { grid-template-columns: 1fr; }
   .case-visual, .blog-list, .post-body { border-radius: 28px 28px 0 0; margin-top: -28px; }
   .cta-band { border-radius: 0 0 28px 28px; }
