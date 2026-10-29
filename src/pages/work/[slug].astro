@@ -20,7 +20,7 @@ const path = `/work/${entry.id}/`;
 const schema = [
   breadcrumbs([
     { name: 'Home', path: '/' },
-    { name: 'Work', path: '/#work' },
+    { name: 'Work', path: '/work/' },
     { name: d.title, path },
   ]),
   {
@@ -49,7 +49,7 @@ const schema = [
     <div class="hero__bg" aria-hidden="true"><div class="hero__glow"></div></div>
     <div class="container page-hero__inner">
       <nav class="crumbs" aria-label="Breadcrumb" data-hero-fade>
-        <a href="/">Home</a><span aria-hidden="true">/</span><a href="/#work">Work</a><span aria-hidden="true">/</span><span aria-current="page">{d.title}</span>
+        <a href="/">Home</a><span aria-hidden="true">/</span><a href="/work/">Work</a><span aria-hidden="true">/</span><span aria-current="page">{d.title}</span>
       </nav>
       <p class="eyebrow" data-hero-fade>Case study · {d.industry}</p>
       <h1 class="page-title" data-split>{d.title} <em>website</em></h1>

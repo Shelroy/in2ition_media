@@ -3,9 +3,8 @@
 /about/               /#about      301
 /services.html        /#services   301
 /services/            /#services   301
-/portfolio.html       /#work       301
-/portfolio/           /#work       301
-/work/                /#work       301
+/portfolio.html       /work/       301
+/portfolio/           /work/       301
 /contact.html         /#contact    301
 /contact/             /#contact    301
 # No privacy policy page yet; send visitors home until one is written.

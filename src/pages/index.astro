@@ -7,10 +7,8 @@ import { SITE } from '../data/site';
 const liveServices = new Set((await getCollection('services', ({ data }) => import.meta.env.DEV || !data.draft)).map(s => s.id));
 const serviceHref = (id: string) => (liveServices.has(id) ? `/services/${id}/` : undefined);
 
-// Case studies not shown as big showcase cards in the Work section appear in "More projects"
-const featuredWork = ['arctic-zone-hvac', 'specom', 'singing-chef-adventures'];
-const moreWork = (await getCollection('work', ({ id }) => !featuredWork.includes(id)))
-  .sort((a, b) => a.data.order - b.data.order);
+// The Work section shows three showcase projects; the full list lives on /work/
+const projectCount = (await getCollection('work')).length;
 
 // Turnstile site key is public. Set PUBLIC_TURNSTILE_SITE_KEY under the Worker's Settings → Build → Variables and secrets;
 // the fallback is Cloudflare's always-pass test key for local previews.
@@ -186,29 +184,9 @@ const schema = [{
           </div>
         </article>
 
-        {moreWork.length > 0 && (
-          <div class="more-work">
-            <h3 class="more-work__title">More projects</h3>
-            <ul class="more-work__grid">
-              {moreWork.map(w => (
-                <li>
-                  <article class="more-card">
-                    <a class="more-card__img" href={`/work/${w.id}/`} tabindex="-1" aria-hidden="true">
-                      <img src={w.data.images.desktop.replace('.webp', '-960.webp')} srcset={`${w.data.images.desktop.replace('.webp', '-560.webp')} 560w, ${w.data.images.desktop.replace('.webp', '-960.webp')} 960w`} sizes="(max-width: 860px) 92vw, 560px" alt="" loading="lazy" decoding="async" width="960" height="600" />
-                    </a>
-                    <p class="more-card__meta">{w.data.industry} · {w.data.location}</p>
-                    <h4 class="more-card__name"><a href={`/work/${w.id}/`}>{w.data.title}</a></h4>
-                    <p class="more-card__desc">{w.data.summary}</p>
-                    <div class="project__links">
-                      <a class="link-arrow link-arrow--case" href={`/work/${w.id}/`}>Read the case study <span aria-hidden="true">→</span></a>
-                      {w.data.liveUrl && <a class="link-arrow" href={w.data.liveUrl} target="_blank" rel="noopener">Visit live site <span aria-hidden="true">↗</span></a>}
-                    </div>
-                  </article>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <div class="work__all">
+          <a href="/work/" class="btn btn--dark" data-magnetic><span class="btn__label" data-text={`See all ${projectCount} projects`}>See all {projectCount} projects</span><span class="btn__icon" aria-hidden="true">→</span></a>
+        </div>
       </div>
     </section>
 

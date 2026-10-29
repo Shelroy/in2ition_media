@@ -106,7 +106,7 @@ const services = (await getCollection('services', ({ data }) => import.meta.env.
         <img src="/assets/img/logo-dark-180.png" alt="" class="logo-on-light" aria-hidden="true" width="180" height="108" loading="lazy">
       </a>
       <nav class="nav__links" aria-label="Main">
-        <a href={`${h}#work`} class="roll"><span data-text="Work">Work</span></a>
+        <a href="/work/" class:list={['roll', { 'is-current': path.startsWith('/work') }]} aria-current={path === '/work/' ? 'page' : undefined}><span data-text="Work">Work</span></a>
         <a href={`${h}#reviews`} class="roll"><span data-text="Reviews">Reviews</span></a>
         <a href={`${h}#services`} class="roll"><span data-text="Services">Services</span></a>
         <a href={`${h}#process`} class="roll"><span data-text="Process">Process</span></a>
@@ -120,7 +120,7 @@ const services = (await getCollection('services', ({ data }) => import.meta.env.
 
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <nav aria-label="Mobile">
-      <a href={`${h}#work`}><small>01</small>Work</a>
+      <a href="/work/"><small>01</small>Work</a>
       <a href={`${h}#reviews`}><small>02</small>Reviews</a>
       <a href={`${h}#services`}><small>03</small>Services</a>
       <a href={`${h}#process`}><small>04</small>Process</a>
@@ -147,6 +147,7 @@ const services = (await getCollection('services', ({ data }) => import.meta.env.
           <a href="/work/arctic-zone-hvac/">Arctic Zone HVAC</a>
           <a href="/work/specom/">Specom</a>
           <a href="/work/singing-chef-adventures/">Singing Chef Adventures</a>
+          <a href="/work/">All projects →</a>
         </div>
         {services.length > 0 && (
           <div>

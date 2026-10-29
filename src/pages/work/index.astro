@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { breadcrumbs, SITE } from '../../data/site';
+
+const projects = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+
+const title = 'Web Design Portfolio Guyana | Our Work | In2ition Media';
+const description = 'Websites In2ition Media has designed and built for Guyanese businesses, from HVAC and engineering firms to tour operators, hotels and beauty studios.';
+const schema = [
+  breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Work', path: '/work/' }]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'In2ition Media web design portfolio',
+    url: `${SITE.url}/work/`,
+    publisher: { '@id': `${SITE.url}/#business` },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: projects.map((p, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `${SITE.url}/work/${p.id}/`,
+        name: `${p.data.title} website`,
+      })),
+    },
+  },
+];
+---
+<Base title={title} description={description} schema={schema}>
+  <section class="page-hero section--dark">
+    <div class="hero__bg" aria-hidden="true"><div class="hero__glow"></div></div>
+    <div class="container page-hero__inner">
+      <nav class="crumbs" aria-label="Breadcrumb" data-hero-fade>
+        <a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Work</span>
+      </nav>
+      <p class="eyebrow" data-hero-fade>Our work</p>
+      <h1 class="page-title" data-split>Websites built for <em>Guyanese businesses.</em></h1>
+      <p class="page-lede" data-hero-fade>Every site here was designed around one goal: getting the right customers to call, message or book. Explore the projects, or visit the live sites.</p>
+    </div>
+  </section>
+
+  <section class="blog-list section--light">
+    <div class="container">
+      <ul class="more-work__grid">
+        {projects.map(p => (
+          <li>
+            <article class="more-card">
+              <a class="more-card__img" href={`/work/${p.id}/`} tabindex="-1" aria-hidden="true">
+                <img src={p.data.images.desktop.replace('.webp', '-960.webp')} srcset={`${p.data.images.desktop.replace('.webp', '-560.webp')} 560w, ${p.data.images.desktop.replace('.webp', '-960.webp')} 960w`} sizes="(max-width: 860px) 92vw, 560px" alt="" loading="lazy" decoding="async" width="960" height="600" />
+              </a>
+              <p class="more-card__meta">{p.data.industry} · {p.data.location}</p>
+              <h2 class="more-card__name"><a href={`/work/${p.id}/`}>{p.data.title}</a></h2>
+              <p class="more-card__desc">{p.data.summary}</p>
+              <ul class="tags">{p.data.services.map(s => <li>{s}</li>)}</ul>
+              <div class="project__links">
+                <a class="link-arrow link-arrow--case" href={`/work/${p.id}/`}>Read the case study <span aria-hidden="true">→</span></a>
+                {p.data.liveUrl && <a class="link-arrow" href={p.data.liveUrl} target="_blank" rel="noopener">Visit live site <span aria-hidden="true">↗</span></a>}
+              </div>
+            </article>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta-band section--light">
+    <div class="container cta-band__inner">
+      <h2 class="section-title" data-split>Want a website like <em>these?</em></h2>
+      <a href="/#contact" class="btn btn--red" data-magnetic><span class="btn__label" data-text="Start a project">Start a project</span><span class="btn__icon" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</Base>
