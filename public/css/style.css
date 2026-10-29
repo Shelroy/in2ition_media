@@ -221,7 +221,7 @@ a:hover .r > span, button:hover .r > span, a:focus-visible .r > span { transform
   transition: background .5s var(--ease-out), border-color .5s var(--ease-out), box-shadow .5s var(--ease-out), max-width .6s var(--ease-out);
 }
 .nav__logo { margin-right: auto; display: block; }
-.nav__logo img { height: 40px; width: auto; }
+.nav__logo img { height: 52px; width: auto; }
 .nav .logo-on-light { display: none; }
 .nav__links { display: flex; gap: 26px; }
 .nav__links a.is-current { color: var(--red); }
@@ -736,7 +736,7 @@ a:hover .r > span, button:hover .r > span, a:focus-visible .r > span { transform
   .nav__shell { padding-left: 16px; }
   .nav__links, .nav__cta { display: none; }
   .nav__toggle { display: block; z-index: 60; }
-  .nav__logo img { height: 34px; }
+  .nav__logo img { height: 44px; }
   .nav.menu-open .nav__shell { background: transparent !important; border-color: transparent !important; box-shadow: none !important; }
   .nav.menu-open .logo-on-dark { display: block !important; }
   .nav.menu-open .logo-on-light { display: none !important; }
