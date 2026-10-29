@@ -21,6 +21,8 @@
 - [Arctic Zone HVAC](https://in2ition.media/work/arctic-zone-hvac/): lead-generating website with a cooling-load estimator for a commercial and industrial HVAC contractor
 - [Specom](https://in2ition.media/work/specom/): corporate website for a standby power engineering company and authorized agent of global power brands
 - [Singing Chef Adventures](https://in2ition.media/work/singing-chef-adventures/): booking website for a food and culture tour guide in Georgetown
+- [Service Guyana](https://in2ition.media/work/service-guyana/): website for a Georgetown HVAC and mechanical contractor and authorized Trane and Mitsubishi dealer
+- [Ultimate Body Sculpting](https://in2ition.media/work/ultimate-body-sculpting/): booking-focused website for a non-surgical body sculpting and beauty studio
 
 ## Articles
 
