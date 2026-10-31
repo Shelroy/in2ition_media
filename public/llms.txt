@@ -27,6 +27,7 @@ Full portfolio: https://in2ition.media/work/
 - [Ultimate Body Sculpting](https://in2ition.media/work/ultimate-body-sculpting/): booking-focused website for a non-surgical body sculpting and beauty studio
 - [Ethnic Relations Commission](https://in2ition.media/work/ethnic-relations-commission/): website for a Guyanese constitutional body, with a seven-step online discrimination complaint form
 - [Aspire Hotel](https://in2ition.media/work/aspire-hotel/): website for a modern Georgetown hotel with WhatsApp booking, room showcases, bar, lounge and conference centre
+- [GCMC](https://in2ition.media/work/gcmc/): website redesign for a Georgetown general contractor, with build-stage case studies, a before-and-after slider and a quote form
 
 ## Articles
 
