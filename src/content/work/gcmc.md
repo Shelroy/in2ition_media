@@ -8,7 +8,7 @@ industry: General Contracting & Construction Management
 location: Georgetown, Guyana
 summary: A full redesign for a Georgetown general contractor, turning years of site photos into case studies that show the build from steel shell to finished interior, with a quote form on every page.
 services: [Web Design, Development, SEO, Lead Capture]
-status: Launching soon
+liveUrl: https://gcmcgeo.com/
 images:
   desktop: /assets/img/work/gcmc-desktop.webp
   full: /assets/img/work/gcmc-full.webp
