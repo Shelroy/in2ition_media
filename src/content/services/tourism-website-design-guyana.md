@@ -1,12 +1,12 @@
 ---
 title: Hotel & tourism website design in Guyana
 seoTitle: Hotel & Tourism Website Design Guyana | In2ition Media
-description: Booking-ready websites for hotels, guesthouses and tour operators in Guyana, designed for travellers planning their trip from abroad. See our work.
+description: "Tourism website design in Guyana for hotels, guesthouses and tour operators: booking-ready sites for travellers planning their trip from abroad."
 order: 4
 serviceType: Hotel and tourism website design
-lede: Booking-ready websites for hotels, guesthouses and tour operators, designed for travellers planning their trip from abroad.
+lede: "Tourism website design in Guyana: booking-ready websites for hotels, guesthouses and tour operators, built for travellers planning their trip from abroad."
 included:
-  - title: A design that sells the experience
+  - title: Tourism website design that sells the experience
     text: Photography-led layouts and a look that matches what guests will actually feel, whether that's a rainforest lodge or a food tour.
   - title: Tours and rooms easy to compare
     text: Each experience or room gets a photo, a short description, a price and a clear next step.
@@ -23,7 +23,7 @@ faq:
     a: Yes. Depending on your business, that can be a booking request form, a WhatsApp booking flow, or a connection to a booking or payment system you already use.
   - q: Do you work with tour operators outside Georgetown?
     a: Yes. We work with tourism businesses anywhere in Guyana. Most of the process happens online and on WhatsApp.
-  - q: How much does a tourism website cost?
+  - q: How much does tourism website design cost in Guyana?
     a: Tourism sites with booking flows usually fall in our custom website range. See our guide to website prices in Guyana for a breakdown, or tell us about your business for an exact quote.
 relatedWork: singing-chef-adventures
 relatedPost: what-makes-a-great-tourism-website
@@ -36,7 +36,10 @@ draft: false
 
 That's why hotel and tourism websites need more than a nice homepage. They need to sell the experience, make options easy to compare and make booking feel safe.
 
-## What we've learned building tourism websites
+
+<figure class="prose-figure"><img src="/assets/img/work/singingchef-desktop-960.webp" srcset="/assets/img/work/singingchef-desktop-560.webp 560w, /assets/img/work/singingchef-desktop-960.webp 960w" sizes="(max-width: 860px) 92vw, 720px" width="960" height="600" alt="Singing Chef Adventures homepage, tourism website design by In2ition Media" loading="lazy" decoding="async"><figcaption>Tourism website design in Guyana: the Singing Chef Adventures homepage, with tours laid out like a menu for travellers planning from abroad.</figcaption></figure>
+
+## Lessons from our tourism website design work
 
 When we designed the website for [Singing Chef Adventures](/work/singing-chef-adventures/), Guyana's food and culture tour guide, we focused on a few principles that apply to almost any tourism business:
 
@@ -47,7 +50,7 @@ When we designed the website for [Singing Chef Adventures](/work/singing-chef-ad
 
 We wrote about this in more detail in [What Makes a Great Tourism Website?](/blog/what-makes-a-great-tourism-website/)
 
-## Who we work with
+## Who our tourism website design is for
 
 - Hotels and guesthouses
 - Eco-lodges and resorts

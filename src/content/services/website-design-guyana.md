@@ -1,10 +1,10 @@
 ---
 title: Website design in Guyana
 seoTitle: Website Design in Guyana | Custom Websites | In2ition
-description: Custom, hand-coded websites for businesses in Guyana. Fast on phones, built for Google, from GY$300,000. See our process, prices and FAQs.
+description: "Website design in Guyana: custom, hand-coded websites that are fast on phones and built for Google, from GY$300,000. See our process and prices."
 order: 0
 serviceType: Web design
-lede: Custom websites for Guyanese businesses that load fast, look like your brand and turn visitors into calls, WhatsApp messages and bookings.
+lede: Website design in Guyana for businesses that want a site that loads fast, looks like their brand and turns visitors into calls, WhatsApp messages and bookings.
 included:
   - title: Custom design
     text: A design built around your brand and your customers, not a template. You see and approve the full design before any code is written.
@@ -36,11 +36,14 @@ relatedPost: how-much-does-a-website-cost-in-guyana
 draft: false
 ---
 
-## Websites built for how Guyana does business
+## Website design built for how Guyana does business
 
-**In2ition Media designs and builds custom websites for businesses in Guyana: hotels, engineering and industrial firms, tour operators, contractors and service businesses.** Each site is designed around one job: getting the right customers to call, message or book.
+**In2ition Media provides custom website design in Guyana for hotels, engineering and industrial firms, tour operators, contractors and service businesses.** Each site is designed around one job: getting the right customers to call, message or book.
 
 Most of your customers will find you on their phone, often on mobile data, after a Google search or a Facebook post. So we design for exactly that: pages that load quickly, show what you do in the first few seconds, and make it easy to reach you.
+
+
+<figure class="prose-figure"><img src="/assets/img/work/arctic-desktop-960.webp" srcset="/assets/img/work/arctic-desktop-560.webp 560w, /assets/img/work/arctic-desktop-960.webp 960w" sizes="(max-width: 860px) 92vw, 720px" width="960" height="600" alt="Arctic Zone HVAC homepage, website design by In2ition Media" loading="lazy" decoding="async"><figcaption>Website design in Guyana: the Arctic Zone HVAC homepage, built around a 24/7 emergency line and a cooling-load estimator.</figcaption></figure>
 
 ## Why a custom website instead of a template
 
@@ -48,14 +51,14 @@ A template site can look fine at first, but it's built for everyone, so it fits 
 
 A custom website is built around your brand and your customers. It's faster, easier to grow, and every page is written and structured to rank for the searches that matter to you, like "AC repair Georgetown" or "Guyana tour operator".
 
-## Our process
+## Our website design process
 
 1. **Discovery.** We learn your business, your customers and what the website needs to achieve.
 2. **Design.** You see the full design before any code is written, and we refine it with you until it's right.
 3. **Build.** We hand-code the site for speed, mobile and search, then test it on real devices.
 4. **Launch and care.** We launch, set up Google Search Console and analytics, and stay on to keep everything fast, secure and up to date.
 
-## Website prices
+## Website design prices in Guyana
 
 | Type of website | Starting price (GYD) | Good for |
 |---|---|---|
@@ -65,6 +68,6 @@ A custom website is built around your brand and your customers. It's faster, eas
 
 For a full breakdown of what affects the cost and what to ask when comparing quotes, read our guide to [website prices in Guyana](/blog/how-much-does-a-website-cost-in-guyana/).
 
-## Work we're proud of
+## Website design work we're proud of
 
 We've built websites for Guyanese businesses including [Arctic Zone HVAC](/work/arctic-zone-hvac/), [Specom](/work/specom/) and [Singing Chef Adventures](/work/singing-chef-adventures/). Each one is designed to bring in enquiries, not just look good.

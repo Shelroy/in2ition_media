@@ -1,10 +1,10 @@
 ---
 title: SEO services in Guyana
 seoTitle: SEO Services in Guyana | Get Found on Google | In2ition
-description: Local and technical SEO for Guyanese businesses, from Google Business Profile to on-page fixes and content that brings in enquiries. Talk to us today.
+description: "SEO services in Guyana: local and technical SEO, Google Business Profile setup and content that brings in enquiries for Guyanese businesses."
 order: 1
 serviceType: Search engine optimization
-lede: Technical and on-page SEO so customers in Guyana find you on Google, not your competitors.
+lede: "SEO services in Guyana: technical and on-page SEO so local customers find you on Google, not your competitors."
 included:
   - title: Technical SEO audit
     text: We check how Google crawls and indexes your site, fix duplicate pages, redirects, sitemaps, HTTPS and speed issues, and set up Google Search Console.
@@ -14,12 +14,12 @@ included:
     text: Categories, services, photos and posts set up properly so you show in the Google Maps results for searches near you.
   - title: Structured data
     text: Schema markup that tells Google and AI search tools exactly who you are, where you are, what you offer and what clients say.
-  - title: Content that ranks
+  - title: SEO content that ranks in Guyana
     text: Service pages, FAQs and articles that answer real questions from Guyanese buyers and turn searches into enquiries.
   - title: Reporting you can read
     text: Plain-language updates on rankings, clicks and enquiries from Search Console, so you can see what the work is doing.
 faq:
-  - q: How long does SEO take to work?
+  - q: How long do SEO services take to work?
     a: Technical fixes and new page titles are usually picked up by Google within a few weeks. Ranking for competitive searches takes longer, typically three to six months of steady work, depending on your industry and competitors.
   - q: Do you guarantee first place on Google?
     a: No. Nobody controls Google's rankings, and anyone who guarantees a position should be avoided. We guarantee the work itself, clear reporting and an honest view of what is and isn't moving.
@@ -41,15 +41,20 @@ A beautiful website that doesn't appear in those searches only gets visitors you
 
 Search in Guyana is local and competitive in a small number of places: the Google Maps pack, the first few organic results, and now AI answers in Google and ChatGPT. Businesses that show up there get the calls. Businesses that don't, rely on referrals and Facebook.
 
-The good news is that most Guyanese websites still get the basics wrong: missing page titles, no Google Business Profile, duplicate versions of the site, or no information about where the business is. Fixing those basics is often enough to move ahead of competitors.
+The good news is that most Guyanese websites still get the basics wrong: missing page titles, no Google Business Profile, duplicate versions of the site, or no information about where the business is. Fixing those basics is often enough to move ahead of competitors, and it's where our SEO services in Guyana start.
 
-## How we work
+
+<figure class="prose-figure"><img src="/assets/img/work/serviceguyana-desktop-960.webp" srcset="/assets/img/work/serviceguyana-desktop-560.webp 560w, /assets/img/work/serviceguyana-desktop-960.webp 960w" sizes="(max-width: 860px) 92vw, 720px" width="960" height="600" alt="Service Guyana homepage, built with SEO by In2ition Media" loading="lazy" decoding="async"><figcaption>SEO services in Guyana start with the website itself: the Service Guyana site was built with page titles, structured data and fast pages from day one.</figcaption></figure>
+
+## How our SEO services work
+
+Our SEO services in Guyana follow four steps.
 
 1. **Audit.** We review your website, your Google Business Profile and your competitors, and show you exactly what's holding you back.
 2. **Fix the foundations.** Technical problems, page titles, descriptions, headings and structured data come first, because everything else depends on them.
 3. **Build content that ranks.** We add the service pages, FAQs and articles your customers are searching for.
 4. **Measure and adjust.** Search Console shows which searches you appear for and how often people click. We report it in plain language and adjust the plan.
 
-## SEO built into every website we design
+## SEO services built into every website we design
 
-Every website In2ition Media builds includes on-page SEO from day one: fast hand-coded pages, clean URLs, page titles, descriptions, a sitemap and structured data. This service is for businesses that want to go further, or that need an existing website fixed.
+Every website In2ition Media builds includes on-page SEO from day one: fast hand-coded pages, clean URLs, page titles, descriptions, a sitemap and structured data. Our SEO services are for businesses in Guyana that want to go further, or that need an existing website fixed.

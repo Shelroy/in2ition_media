@@ -1,12 +1,12 @@
 ---
 title: Website hosting & care in Guyana
-seoTitle: Website Hosting & Care in Guyana | In2ition Media
-description: Fast, secure website hosting with updates, backups and monitoring for Guyanese businesses, plus local support on WhatsApp when you need it.
+seoTitle: Website Hosting in Guyana | Hosting & Care | In2ition
+description: "Website hosting in Guyana: fast, secure hosting with updates, backups and monitoring, plus local support on WhatsApp when you need it."
 order: 2
 serviceType: Website hosting and maintenance
-lede: Fast, secure hosting with updates, backups and monitoring, so your website is always online and always current.
+lede: Website hosting in Guyana with updates, backups and monitoring, so your website is always online and always current.
 included:
-  - title: Fast, secure hosting
+  - title: Fast, secure website hosting
     text: Your site is served over a global network with HTTPS, so it loads quickly for customers in Guyana and travellers abroad alike.
   - title: Backups
     text: Regular backups of your site and its content, so a mistake or a problem never means starting again from scratch.
@@ -19,7 +19,7 @@ included:
   - title: Local support
     text: Message us on WhatsApp and talk to the people who built your site, in your time zone.
 faq:
-  - q: Can you host a website you didn't build?
+  - q: Can you provide hosting for a website you didn't build?
     a: Often, yes. It depends on how the site was built. Get in touch with the address of your website and we'll tell you what's involved.
   - q: Will moving my website affect my email?
     a: It shouldn't. Email and website are set up separately in your domain's DNS settings. We map out your email records before any move and keep them exactly as they are.
@@ -30,11 +30,14 @@ faq:
 draft: false
 ---
 
-## Why hosting matters more than you think
+## Why website hosting matters more than you think
 
 **Website hosting is the service that keeps your website online and delivers it to visitors.** Cheap hosting is usually slow, rarely updated and offers little help when something breaks. That costs you customers: people leave a site that takes too long to load, and Google ranks slow sites lower.
 
 Most business owners don't want to think about servers, security updates or SSL certificates. They want their website to work, and someone to call when it doesn't.
+
+
+<figure class="prose-figure"><img src="/assets/img/work/gcmc-desktop-960.webp" srcset="/assets/img/work/gcmc-desktop-560.webp 560w, /assets/img/work/gcmc-desktop-960.webp 960w" sizes="(max-width: 860px) 92vw, 720px" width="960" height="600" alt="GCMC website homepage on fast website hosting" loading="lazy" decoding="async"><figcaption>Website hosting in Guyana that stays fast: the GCMC website is served over Cloudflare's global network.</figcaption></figure>
 
 ## What "care" means
 
@@ -45,10 +48,10 @@ Hosting keeps the site online. Care keeps it working well:
 - **Small changes:** so your website stays as current as your Facebook page
 - **Speed:** so pages stay fast as you add content
 
-## Who it's for
+## Who our website hosting is for
 
-Hosting & care is included as an option with every website we build, and is available for businesses whose site was built elsewhere. If you'd rather spend your time running your business than managing a website, this is for you.
+Our website hosting in Guyana is included as an option with every website we build, and is available for businesses whose site was built elsewhere. If you'd rather spend your time running your business than managing a website, this is for you.
 
-## Moving to In2ition Media
+## Moving your website hosting to In2ition Media
 
 Switching hosting can feel risky, especially when your business email runs on the same domain. We plan every move carefully, keep your email records untouched, and test the site before switching it over, so your customers never see a gap.

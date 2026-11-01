@@ -107,7 +107,7 @@ const schema = [
   {d.faq.length > 0 && (
     <section class="case-body section--light">
       <div class="container container--narrow prose">
-        <h2>Frequently asked questions</h2>
+        <h2>{d.title}: frequently asked questions</h2>
         {d.faq.map(f => (<><h3>{f.q}</h3><p>{f.a}</p></>))}
       </div>
     </section>

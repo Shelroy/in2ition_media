@@ -641,6 +641,10 @@ a:hover .r > span, button:hover .r > span, a:focus-visible .r > span { transform
 .prose li + li { margin-top: .4em; }
 .prose li::marker { color: var(--red); }
 .prose blockquote { margin-left: 0; padding-left: 20px; border-left: 3px solid var(--red); font-style: italic; }
+.hero__title .line__inner { text-wrap: balance; } /* keeps the first headline line from leaving one word alone on phones */
+.prose-figure { margin: 2em 0 0; }
+.prose-figure img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line-light); box-shadow: 0 24px 48px -28px rgba(0,0,0,.35); }
+.prose-figure figcaption { margin-top: 12px; font-size: 15px; line-height: 1.55; color: #6b6b73; }
 .prose hr { border: 0; border-top: 1px solid var(--line-light); margin: 2.4em 0; }
 .prose table { width: 100%; border-collapse: collapse; font-size: 16px; line-height: 1.5; display: block; overflow-x: auto; }
 .prose th, .prose td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line-light); vertical-align: top; }
