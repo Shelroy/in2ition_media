@@ -77,7 +77,7 @@ const schema = [
             <div class="keep-reading__grid">
               {relatedWork && (
                 <a class="related-card related-card--work" href={`/work/${relatedWork.id}/`}>
-                  <img src={relatedWork.data.images.desktop.replace('.webp', '-560.webp')} alt="" loading="lazy" width="560" height="350" />
+                  <img src={relatedWork.data.images.desktop.replace('.webp', '-560.webp')} alt={`${relatedWork.data.title} website, ${relatedWork.data.industry.toLowerCase()} web design by In2ition Media`} loading="lazy" width="560" height="350" />
                   <span class="related-card__label">Case study</span>
                   <span class="related-card__title">{relatedWork.data.title}</span>
                 </a>

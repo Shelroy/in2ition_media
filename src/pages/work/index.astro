@@ -26,6 +26,11 @@ const schema = [
     },
   },
 ];
+
+// Every other card mentions "web design in Guyana": Yoast wants the keyphrase in 30-70% of image alt text, not all of it.
+const altFor = (p, i) => i % 2 === 0
+  ? `${p.data.title} website, web design in Guyana by In2ition Media`
+  : `${p.data.title} website homepage`;
 ---
 <Base title={title} description={description} schema={schema}>
   <section class="page-hero section--dark">
@@ -43,11 +48,11 @@ const schema = [
   <section class="blog-list section--light">
     <div class="container">
       <ul class="more-work__grid">
-        {projects.map(p => (
+        {projects.map((p, i) => (
           <li>
             <article class="more-card">
               <a class="more-card__img" href={`/work/${p.id}/`} tabindex="-1" aria-hidden="true">
-                <img src={p.data.images.desktop.replace('.webp', '-960.webp')} srcset={`${p.data.images.desktop.replace('.webp', '-560.webp')} 560w, ${p.data.images.desktop.replace('.webp', '-960.webp')} 960w`} sizes="(max-width: 860px) 92vw, 560px" alt="" loading="lazy" decoding="async" width="960" height="600" />
+                <img src={p.data.images.desktop.replace('.webp', '-960.webp')} srcset={`${p.data.images.desktop.replace('.webp', '-560.webp')} 560w, ${p.data.images.desktop.replace('.webp', '-960.webp')} 960w`} sizes="(max-width: 860px) 92vw, 560px" alt={altFor(p, i)} loading="lazy" decoding="async" width="960" height="600" />
               </a>
               <p class="more-card__meta">{p.data.industry} · {p.data.location}</p>
               <h2 class="more-card__name"><a href={`/work/${p.id}/`}>{p.data.title}</a></h2>
